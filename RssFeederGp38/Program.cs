@@ -18,6 +18,8 @@ namespace RssFeederGp38
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+
+            Console.WriteLine("hello edvin");
         }
     }
 }
