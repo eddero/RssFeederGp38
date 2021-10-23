@@ -6,7 +6,7 @@ using DataAccesLayer;
 
 namespace DataAccesLayer.Repositories
 {
-    public class PodcastRepository : IRepository<Podcast>
+    public class PodcastRepository : IPodcastRepository<Podcast>
     {
         SerializerForXml dataManager;
         List<Podcast> listOfPodcasts;
@@ -42,6 +42,16 @@ namespace DataAccesLayer.Repositories
             }
             return listOfPodcastDeserialized;
             
+        }
+
+        public Podcast GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetIndex(string name)
+        {
+            throw new NotImplementedException();
         }
 
         public void SaveChanges()

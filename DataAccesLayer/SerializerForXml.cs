@@ -12,9 +12,10 @@ namespace DataAccesLayer
     {
         public void Serialize(List<Podcast> podcastList)
         {
-            Console.WriteLine("hello there");
+            
             try
             {
+                Console.WriteLine(podcastList);
                 XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Podcast>));
                 using (FileStream outFile = new FileStream("Podcasts.xml", FileMode.Create,
                     FileAccess.Write))

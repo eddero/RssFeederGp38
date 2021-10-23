@@ -10,6 +10,9 @@ namespace RssFeederGp38.Models
         {
         }
 
+        private Chapter()
+        {
+        }
         public override string Display()
         {
             throw new NotImplementedException();

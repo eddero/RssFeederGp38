@@ -7,6 +7,7 @@ namespace  RssFeederGp38.Models
 {
     [XmlInclude(typeof(Category))]
     [XmlInclude(typeof(Chapter))]
+
     public abstract class Podcast
     {
         public string Name { get; set; }

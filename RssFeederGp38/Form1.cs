@@ -23,6 +23,7 @@ namespace RssFeederGp38
 
         private void button1_Click(object sender, EventArgs e)
         {
+            podcastController.CreatePodcast(txtUrl.Text, "Chapter");
             
         }
 
