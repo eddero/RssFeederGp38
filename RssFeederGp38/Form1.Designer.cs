@@ -29,17 +29,16 @@ namespace RssFeederGp38
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.bthAddFeed = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.bthDeleteFeed = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUrl = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -48,21 +47,23 @@ namespace RssFeederGp38
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.listBox4 = new System.Windows.Forms.ListBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnAddCategory = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnDeleteCategory = new System.Windows.Forms.Button();
+            this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // button1
+            // bthAddFeed
             // 
-            this.button1.Location = new System.Drawing.Point(213, 229);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Ny...";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bthAddFeed.Location = new System.Drawing.Point(213, 229);
+            this.bthAddFeed.Name = "bthAddFeed";
+            this.bthAddFeed.Size = new System.Drawing.Size(75, 23);
+            this.bthAddFeed.TabIndex = 0;
+            this.bthAddFeed.Text = "Ny...";
+            this.bthAddFeed.UseVisualStyleBackColor = true;
+            this.bthAddFeed.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -73,23 +74,14 @@ namespace RssFeederGp38
             this.button2.Text = "Spara";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // bthDeleteFeed
             // 
-            this.button3.Location = new System.Drawing.Point(385, 229);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Ta bort...";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(54, 309);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(325, 94);
-            this.listBox1.TabIndex = 3;
+            this.bthDeleteFeed.Location = new System.Drawing.Point(385, 229);
+            this.bthDeleteFeed.Name = "bthDeleteFeed";
+            this.bthDeleteFeed.Size = new System.Drawing.Size(75, 23);
+            this.bthDeleteFeed.TabIndex = 2;
+            this.bthDeleteFeed.Text = "Ta bort...";
+            this.bthDeleteFeed.UseVisualStyleBackColor = true;
             // 
             // listBox2
             // 
@@ -97,6 +89,7 @@ namespace RssFeederGp38
             this.listBox2.ItemHeight = 15;
             this.listBox2.Location = new System.Drawing.Point(479, 58);
             this.listBox2.Name = "listBox2";
+            this.listBox2.ScrollAlwaysVisible = true;
             this.listBox2.Size = new System.Drawing.Size(277, 94);
             this.listBox2.TabIndex = 4;
             // 
@@ -143,12 +136,12 @@ namespace RssFeederGp38
             this.label3.TabIndex = 9;
             this.label3.Text = "label3";
             // 
-            // textBox1
+            // txtUrl
             // 
-            this.textBox1.Location = new System.Drawing.Point(54, 200);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 23);
-            this.textBox1.TabIndex = 11;
+            this.txtUrl.Location = new System.Drawing.Point(54, 200);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.Size = new System.Drawing.Size(100, 23);
+            this.txtUrl.TabIndex = 11;
             // 
             // label5
             // 
@@ -183,6 +176,7 @@ namespace RssFeederGp38
             this.listBox3.ItemHeight = 15;
             this.listBox3.Location = new System.Drawing.Point(54, 67);
             this.listBox3.Name = "listBox3";
+            this.listBox3.ScrollAlwaysVisible = true;
             this.listBox3.Size = new System.Drawing.Size(359, 109);
             this.listBox3.TabIndex = 15;
             // 
@@ -222,23 +216,15 @@ namespace RssFeederGp38
             this.label11.TabIndex = 19;
             this.label11.Text = "Kategori";
             // 
-            // listBox4
+            // btnAddCategory
             // 
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 15;
-            this.listBox4.Location = new System.Drawing.Point(479, 309);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(309, 94);
-            this.listBox4.TabIndex = 20;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(479, 210);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 21;
-            this.button4.Text = "Ny...";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Location = new System.Drawing.Point(479, 210);
+            this.btnAddCategory.Name = "btnAddCategory";
+            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCategory.TabIndex = 21;
+            this.btnAddCategory.Text = "Ny...";
+            this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // button5
             // 
@@ -249,32 +235,52 @@ namespace RssFeederGp38
             this.button5.Text = "Spara";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnDeleteCategory
             // 
-            this.button6.Location = new System.Drawing.Point(641, 210);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 23;
-            this.button6.Text = "Ta bort...";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Location = new System.Drawing.Point(641, 210);
+            this.btnDeleteCategory.Name = "btnDeleteCategory";
+            this.btnDeleteCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteCategory.TabIndex = 23;
+            this.btnDeleteCategory.Text = "Ta bort...";
+            this.btnDeleteCategory.UseVisualStyleBackColor = true;
+            this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
+            // 
+            // txtCategoryName
+            // 
+            this.txtCategoryName.Location = new System.Drawing.Point(479, 170);
+            this.txtCategoryName.Name = "txtCategoryName";
+            this.txtCategoryName.Size = new System.Drawing.Size(277, 23);
+            this.txtCategoryName.TabIndex = 24;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(479, 170);
+            this.textBox2.Location = new System.Drawing.Point(479, 306);
+            this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(277, 23);
-            this.textBox2.TabIndex = 24;
+            this.textBox2.Size = new System.Drawing.Size(277, 130);
+            this.textBox2.TabIndex = 26;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(54, 312);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.ScrollAlwaysVisible = true;
+            this.listBox1.Size = new System.Drawing.Size(386, 124);
+            this.listBox1.TabIndex = 27;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 460);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.txtCategoryName);
+            this.Controls.Add(this.btnDeleteCategory);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.listBox4);
+            this.Controls.Add(this.btnAddCategory);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -283,17 +289,16 @@ namespace RssFeederGp38
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.bthDeleteFeed);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bthAddFeed);
             this.MinimumSize = new System.Drawing.Size(836, 499);
             this.Name = "Form1";
             this.Text = "Podcasts";
@@ -304,17 +309,16 @@ namespace RssFeederGp38
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bthAddFeed;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button bthDeleteFeed;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUrl;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -323,11 +327,12 @@ namespace RssFeederGp38
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ListBox listBox4;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnAddCategory;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btnDeleteCategory;
+        private System.Windows.Forms.TextBox txtCategoryName;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
