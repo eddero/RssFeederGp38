@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using RssFeederGp38.Models;
 using DataAccesLayer;
+using System.Linq;
 
 namespace DataAccesLayer.Repositories
 {

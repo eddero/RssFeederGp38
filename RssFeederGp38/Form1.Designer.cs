@@ -53,6 +53,7 @@ namespace RssFeederGp38
             this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.btnTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bthAddFeed
@@ -92,6 +93,7 @@ namespace RssFeederGp38
             this.listBox2.ScrollAlwaysVisible = true;
             this.listBox2.Size = new System.Drawing.Size(277, 94);
             this.listBox2.TabIndex = 4;
+            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -270,11 +272,22 @@ namespace RssFeederGp38
             this.listBox1.Size = new System.Drawing.Size(386, 124);
             this.listBox1.TabIndex = 27;
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(479, 251);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 28;
+            this.btnTest.Text = "test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 460);
+            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.txtCategoryName);
@@ -333,6 +346,7 @@ namespace RssFeederGp38
         private System.Windows.Forms.TextBox txtCategoryName;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Button btnTest;
     }
 }
 

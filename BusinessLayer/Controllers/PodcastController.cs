@@ -8,7 +8,7 @@ namespace BusinessLayer.Controllers
 {
     public class PodcastController
     {
-        IRepository<Podcast> podcastRepository;
+        IPodcastRepository<Podcast> podcastRepository;
         public PodcastController()
         {
             podcastRepository = new PodcastRepository();
@@ -32,11 +32,21 @@ namespace BusinessLayer.Controllers
             podcastRepository.Create(newPodcast);
 
         }
-        
-
         public List<Podcast> GetAllPodcast()
         {
             return podcastRepository.GetAll();
+        }
+
+        public string GetPodcastDetailsByName(string name)
+        {
+            //
+            return podcastRepository.GetByName(name).Display();
+        }
+
+        public void DeletePodcast(string name)
+        {
+            int index = podcastRepository.GetIndex(name);
+            podcastRepository.Delete(index);
         }
     }
 }
