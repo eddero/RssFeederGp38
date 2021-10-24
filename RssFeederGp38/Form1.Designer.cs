@@ -36,7 +36,7 @@ namespace RssFeederGp38
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUrl = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -53,7 +53,6 @@ namespace RssFeederGp38
             this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.btnTest = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bthAddFeed
@@ -64,7 +63,7 @@ namespace RssFeederGp38
             this.bthAddFeed.TabIndex = 0;
             this.bthAddFeed.Text = "Ny...";
             this.bthAddFeed.UseVisualStyleBackColor = true;
-            this.bthAddFeed.Click += new System.EventHandler(this.button1_Click);
+            this.bthAddFeed.Click += new System.EventHandler(this.bthAddFeed_Click_1);
             // 
             // button2
             // 
@@ -121,13 +120,13 @@ namespace RssFeederGp38
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 7;
             // 
-            // comboBox2
+            // categoryComboBox
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(375, 200);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(85, 23);
-            this.comboBox2.TabIndex = 8;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(375, 200);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(85, 23);
+            this.categoryComboBox.TabIndex = 8;
             // 
             // label3
             // 
@@ -272,22 +271,11 @@ namespace RssFeederGp38
             this.listBox1.Size = new System.Drawing.Size(386, 124);
             this.listBox1.TabIndex = 27;
             // 
-            // btnTest
-            // 
-            this.btnTest.Location = new System.Drawing.Point(479, 251);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 23);
-            this.btnTest.TabIndex = 28;
-            this.btnTest.Text = "test";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 460);
-            this.Controls.Add(this.btnTest);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.txtCategoryName);
@@ -304,7 +292,7 @@ namespace RssFeederGp38
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
+            this.Controls.Add(this.categoryComboBox);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -329,7 +317,7 @@ namespace RssFeederGp38
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUrl;
         private System.Windows.Forms.Label label5;
@@ -346,7 +334,6 @@ namespace RssFeederGp38
         private System.Windows.Forms.TextBox txtCategoryName;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button btnTest;
     }
 }
 

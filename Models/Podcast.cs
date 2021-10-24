@@ -7,13 +7,14 @@ namespace  RssFeederGp38.Models
 {
     [XmlInclude(typeof(Category))]
     [XmlInclude(typeof(Chapter))]
+    [XmlInclude(typeof(Feed))]
 
     public abstract class Podcast
     {
         public string Name { get; set; }
 
 
-    public Podcast(string name)
+        public Podcast(string name)
         {
             Name = name;
             
@@ -22,6 +23,7 @@ namespace  RssFeederGp38.Models
         {
 
         }
+
         public abstract string Display();
 
     }

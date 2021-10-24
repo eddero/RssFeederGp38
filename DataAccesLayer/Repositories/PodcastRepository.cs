@@ -47,7 +47,8 @@ namespace DataAccesLayer.Repositories
 
         public Podcast GetByName(string name)
         {
-            throw new NotImplementedException();
+            return GetAll().FirstOrDefault(p => p.Name.Equals(name));
+            
         }
 
         public int GetIndex(string name)

@@ -14,49 +14,55 @@ namespace RssFeederGp38
 {
     public partial class Form1 : Form
     {
-        PodcastController podcastController;  
+        PodcastController podcastController;
         public Form1()
         {
             InitializeComponent();
             podcastController = new PodcastController();
-            listBox2.Items.Add("hello");
-            
+            PopulateList();
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PopulateList()
         {
-            podcastController.CreatePodcast(txtUrl.Text, "Chapter");
-            
+            categoryComboBox.Items.Clear();
+            listBox2.Items.Clear();
+
+            foreach (Podcast item in podcastController.GetAllPodcast())
+            {
+                if (item != null)
+                {
+                    listBox2.Items.Add(item.Name);
+                    categoryComboBox.Items.Add(item.Name);
+                }
+            }
+        }
+
+        private void bthAddFeed_Click_1(object sender, EventArgs e)
+        {
+            podcastController.CreateFeed(txtUrl.Text, categoryComboBox.Text, "Feed");
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             podcastController.CreatePodcast(txtCategoryName.Text, "Category");
+            PopulateList();
 
 
-            
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-        }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-            listBox2.Items.Clear();
-
-            foreach (Podcast item in podcastController.GetAllPodcast())
-            {
-                Console.WriteLine("hello");
-            }
 
         }
 
+        
     }
+   
 }

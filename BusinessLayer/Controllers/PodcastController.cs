@@ -25,13 +25,20 @@ namespace BusinessLayer.Controllers
             {
                 newPodcast = new Chapter(name);
             }
-            if (objectType.Equals("Feed"))
-            {
-                newPodcast = new Feed(name);
-            }
             podcastRepository.Create(newPodcast);
 
         }
+
+        public void CreateFeed(string name, string category, string objectType)
+        {
+            Podcast newPodcast = null;
+            if (objectType.Equals("Feed"))
+            {
+                newPodcast = new Feed(name, category);
+            }
+            podcastRepository.Create(newPodcast);
+        }
+
         public List<Podcast> GetAllPodcast()
         {
             return podcastRepository.GetAll();
