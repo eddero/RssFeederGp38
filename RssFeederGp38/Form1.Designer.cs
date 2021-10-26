@@ -53,6 +53,8 @@ namespace RssFeederGp38
             this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bthAddFeed
@@ -115,10 +117,11 @@ namespace RssFeederGp38
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(213, 200);
+            this.comboBox1.Location = new System.Drawing.Point(235, 200);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 7;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // categoryComboBox
             // 
@@ -139,7 +142,7 @@ namespace RssFeederGp38
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(54, 200);
+            this.txtUrl.Location = new System.Drawing.Point(116, 200);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(100, 23);
             this.txtUrl.TabIndex = 11;
@@ -147,7 +150,7 @@ namespace RssFeederGp38
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(54, 179);
+            this.label5.Location = new System.Drawing.Point(116, 179);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 12;
@@ -156,7 +159,7 @@ namespace RssFeederGp38
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(213, 179);
+            this.label6.Location = new System.Drawing.Point(235, 179);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 15);
             this.label6.TabIndex = 13;
@@ -271,11 +274,30 @@ namespace RssFeederGp38
             this.listBox1.Size = new System.Drawing.Size(386, 124);
             this.listBox1.TabIndex = 27;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 200);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(66, 23);
+            this.textBox1.TabIndex = 28;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 179);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 15);
+            this.label4.TabIndex = 29;
+            this.label4.Text = "Namn";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 460);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.txtCategoryName);
@@ -334,6 +356,8 @@ namespace RssFeederGp38
         private System.Windows.Forms.TextBox txtCategoryName;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
