@@ -43,18 +43,23 @@ namespace RssFeederGp38
                 }
             }
 
-            using (XmlReader xmlReader = XmlReader.Create("Podcasts.xml"))
+            
+             XmlDocument doc = new XmlDocument();
+            
             {
-                XDocument xDocument = XDocument.Load(xmlReader);
-                var result = xDocument.Descendants("Feed");
-                    
-                    
-                foreach (var item in result)
+                doc.Load("Podcasts.xml");
+                XmlElement root = doc.DocumentElement;
+                XmlNodeList nodes = root.SelectNodes("descendant::Url");
+
+                foreach (XmlNode singularnode in nodes)
                 {
-                    Console.WriteLine(item);
-                    listBox2.Items.Add(item);
+                    listBox2.Items.Add(singularnode.InnerText);
+                    Console.WriteLine(singularnode.InnerText);
+
                 }
+
             }
+            
 
         }
 
