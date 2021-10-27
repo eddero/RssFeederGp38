@@ -4,9 +4,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.ServiceModel.Syndication;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 using BusinessLayer.Controllers;
 using RssFeederGp38.Models;
 
@@ -20,6 +23,8 @@ namespace RssFeederGp38
             InitializeComponent();
             podcastController = new PodcastController();
             PopulateList();
+
+
 
         }
 
@@ -36,6 +41,8 @@ namespace RssFeederGp38
                     categoryComboBox.Items.Add(item.Name);
                 }
             }
+           
+
         }
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)

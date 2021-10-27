@@ -6,12 +6,14 @@ using System.Xml.Serialization;
 using RssFeederGp38.Models;
 using System.IO;
 using System.Xml;
-using System.ServiceModel.Syndication;
+
 
 namespace DataAccesLayer
 {
     internal class SerializerForXml
     {
+       
+
         public void Serialize(List<Podcast> podcastList)
         {
             
@@ -23,6 +25,7 @@ namespace DataAccesLayer
                     FileAccess.Write))
                 {
                     xmlSerializer.Serialize(outFile, podcastList);
+                   
                 }
             }
             catch (Exception e)
@@ -30,6 +33,8 @@ namespace DataAccesLayer
                 throw new SerializerException("Podcasts.xml", "Could not serialize to the file");
             }
         }
+
+        
     
 
         public List<Podcast> Deserialize()

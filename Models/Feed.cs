@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ServiceModel.Syndication;
 using System.Text;
+
 
 namespace RssFeederGp38.Models
 {
@@ -15,14 +17,15 @@ namespace RssFeederGp38.Models
         {
             throw new NotImplementedException();
         }
-        public Feed(string name, string category)
+        public Feed(string name, string category) :base(name)
         {
             Category = category;
             URL = name;
         }
         private Feed()
         {
-
+           
         }
+
     }
 }

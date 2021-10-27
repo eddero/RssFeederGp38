@@ -17,7 +17,7 @@ namespace  RssFeederGp38.Models
         public Podcast(string name)
         {
             Name = name;
-            
+
         }
         public Podcast()
         {

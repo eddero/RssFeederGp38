@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using RssFeederGp38.Models;
 using DataAccesLayer.Repositories;
+using System.Xml;
+using System.ServiceModel.Syndication;
 
 namespace BusinessLayer.Controllers
 {
@@ -26,6 +28,14 @@ namespace BusinessLayer.Controllers
                 newPodcast = new Chapter(name);
             }
             podcastRepository.Create(newPodcast);
+
+        }
+
+        public void SerializerForXml(string url)
+        {
+            XmlReader reader = XmlReader.Create("https://www.espn.com/espn/rss/news");
+
+            SyndicationFeed feed = SyndicationFeed.Load(reader);
 
         }
 
