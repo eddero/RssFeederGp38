@@ -41,7 +41,18 @@ namespace RssFeederGp38
                     categoryComboBox.Items.Add(item.Name);
                 }
             }
-           
+
+            using (XmlReader xmlReader = XmlReader.Create("Podcasts.xml"))
+            {
+                XDocument xDocument = XDocument.Load(xmlReader);
+                var result = xDocument.Descendants("Feed");
+                    
+                foreach (var item in result)
+                {
+                    Console.WriteLine(item);
+                    listBox2.Items.Add(item);
+                }
+            }
 
         }
 
