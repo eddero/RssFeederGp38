@@ -13,14 +13,17 @@ namespace RssFeederGp38.Models
         public int Frequency { get; set; }
 
 
+
         public override string Display()
         {
             throw new NotImplementedException();
         }
+        public Feed (string name, string category)
         public Feed(string name, string category) :base(name)
         {
             Category = category;
             URL = name;
+           
         }
         private Feed()
         {
