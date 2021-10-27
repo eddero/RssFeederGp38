@@ -14,6 +14,7 @@ namespace  RssFeederGp38.Models
     public abstract class Podcast
     {
         public string Name { get; set; }
+        public string Url { get; set; }
 
 
         public Podcast(string name)
@@ -21,6 +22,14 @@ namespace  RssFeederGp38.Models
             Name = name;
 
         }
+
+        public Podcast(string name, string url)
+        {
+            Name = name;
+            Url = url;
+
+        }
+
         public Podcast()
         {
 

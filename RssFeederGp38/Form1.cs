@@ -38,6 +38,7 @@ namespace RssFeederGp38
                 if (item != null)
                 {
                     listBox2.Items.Add(item.Name);
+                    
                     categoryComboBox.Items.Add(item.Name);
                 }
             }
@@ -46,6 +47,7 @@ namespace RssFeederGp38
             {
                 XDocument xDocument = XDocument.Load(xmlReader);
                 var result = xDocument.Descendants("Feed");
+                    
                     
                 foreach (var item in result)
                 {
@@ -58,7 +60,7 @@ namespace RssFeederGp38
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
-            podcastController.CreateFeed(txtName.Text, txtUrl.Text, categoryComboBox.Text, "Feed");
+            podcastController.CreatePodcast(txtName.Text, txtUrl.Text, categoryComboBox.Text, "Feed");
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
@@ -74,11 +76,7 @@ namespace RssFeederGp38
 
         }
 
-        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-
-        }
+      
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {

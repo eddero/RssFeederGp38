@@ -94,7 +94,6 @@ namespace RssFeederGp38
             this.listBox2.ScrollAlwaysVisible = true;
             this.listBox2.Size = new System.Drawing.Size(277, 94);
             this.listBox2.TabIndex = 4;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged);
             // 
             // label1
             // 

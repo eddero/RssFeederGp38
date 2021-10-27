@@ -51,6 +51,11 @@ namespace DataAccesLayer.Repositories
             
         }
 
+        public Podcast GetByUrl(string url)
+        {
+            return GetAll().FirstOrDefault(p => p.Url.Equals(url));
+        }
+
         public int GetIndex(string name)
         {
             throw new NotImplementedException();

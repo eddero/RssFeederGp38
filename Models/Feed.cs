@@ -8,7 +8,6 @@ namespace RssFeederGp38.Models
 {
     public class Feed : Podcast
     {
-        public string URL { get; set; }
         public string Category { get; set; }
         public int Frequency { get; set; }
 
@@ -16,12 +15,11 @@ namespace RssFeederGp38.Models
 
         public override string Display()
         {
-            throw new NotImplementedException();
+            return Url;
         }
-        public Feed(string name, string url, string category) :base(name)
+        public Feed(string name, string url, string category) :base(name, url) 
         {
             Category = category;
-            URL = url;
            
         }
         private Feed()

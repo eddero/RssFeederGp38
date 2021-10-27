@@ -30,14 +30,16 @@ namespace BusinessLayer.Controllers
             podcastRepository.Create(newPodcast);
 
         }
-
-        public void SerializerForXml(string url)
+        public void CreatePodcast(string name, string url, string category, string objectType)
         {
-            XmlReader reader = XmlReader.Create("https://www.espn.com/espn/rss/news");
-
-            SyndicationFeed feed = SyndicationFeed.Load(reader);
-
+            Podcast newPodcast = null;
+            if (objectType.Equals("Feed"))
+            {
+                newPodcast = new Feed(name, url, category);
+            }
+            podcastRepository.Create(newPodcast);
         }
+
 
         public void CreateFeed(string name, string url, string category, string objectType)
         {
@@ -49,6 +51,14 @@ namespace BusinessLayer.Controllers
             podcastRepository.Create(newPodcast);
         }
 
+        public void SerializerForXml(string url)
+        {
+            XmlReader reader = XmlReader.Create("https://www.espn.com/espn/rss/news");
+
+            SyndicationFeed feed = SyndicationFeed.Load(reader);
+
+        }     
+
         public List<Podcast> GetAllPodcast()
         {
             return podcastRepository.GetAll();
@@ -56,8 +66,13 @@ namespace BusinessLayer.Controllers
 
         public string GetPodcastDetailsByName(string name)
         {
-            //
+            
             return podcastRepository.GetByName(name).Display();
+        }
+
+        public string GetPodcastDetailsByUrl(string url)
+        {
+            return podcastRepository.GetByUrl(url).Display();
         }
 
         public void DeletePodcast(string name)
