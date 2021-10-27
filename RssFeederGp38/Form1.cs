@@ -47,7 +47,7 @@ namespace RssFeederGp38
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
-            podcastController.CreateFeed(txtUrl.Text, categoryComboBox.Text, "Feed");
+            podcastController.CreateFeed(txtName.Text, txtUrl.Text, categoryComboBox.Text, "Feed");
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)

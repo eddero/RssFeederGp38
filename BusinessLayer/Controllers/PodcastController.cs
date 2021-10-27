@@ -39,12 +39,12 @@ namespace BusinessLayer.Controllers
 
         }
 
-        public void CreateFeed(string name, string category, string objectType)
+        public void CreateFeed(string name, string url, string category, string objectType)
         {
             Podcast newPodcast = null;
             if (objectType.Equals("Feed"))
             {
-                newPodcast = new Feed(name, category);
+                newPodcast = new Feed(name, url, category);
             }
             podcastRepository.Create(newPodcast);
         }

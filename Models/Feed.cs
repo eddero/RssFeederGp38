@@ -18,11 +18,10 @@ namespace RssFeederGp38.Models
         {
             throw new NotImplementedException();
         }
-        public Feed (string name, string category)
-        public Feed(string name, string category) :base(name)
+        public Feed(string name, string url, string category) :base(name)
         {
             Category = category;
-            URL = name;
+            URL = url;
            
         }
         private Feed()

@@ -53,7 +53,7 @@ namespace RssFeederGp38
             this.txtCategoryName = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -274,13 +274,13 @@ namespace RssFeederGp38
             this.listBox1.Size = new System.Drawing.Size(386, 124);
             this.listBox1.TabIndex = 27;
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 200);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(66, 23);
-            this.textBox1.TabIndex = 28;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtName.Location = new System.Drawing.Point(12, 200);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(66, 23);
+            this.txtName.TabIndex = 28;
+            this.txtName.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label4
             // 
@@ -297,7 +297,7 @@ namespace RssFeederGp38
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 460);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.txtCategoryName);
@@ -356,7 +356,7 @@ namespace RssFeederGp38
         private System.Windows.Forms.TextBox txtCategoryName;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label4;
     }
 }
