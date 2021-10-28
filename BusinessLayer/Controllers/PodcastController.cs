@@ -11,9 +11,11 @@ namespace BusinessLayer.Controllers
     public class PodcastController
     {
         IPodcastRepository<Podcast> podcastRepository;
+        Chapter chapter;
         public PodcastController()
         {
             podcastRepository = new PodcastRepository();
+            chapter = new Chapter();
         }
 
         public void CreatePodcast(string name, string objectType)
@@ -23,10 +25,7 @@ namespace BusinessLayer.Controllers
             {
                 newPodcast = new Category(name);
             }
-            if (objectType.Equals("Chapter"))
-            {
-                newPodcast = new Chapter(name);
-            }
+            
             podcastRepository.Create(newPodcast);
 
         }
@@ -53,15 +52,22 @@ namespace BusinessLayer.Controllers
 
         public void SerializerForXml(string url)
         {
-            XmlReader reader = XmlReader.Create("https://www.espn.com/espn/rss/news");
+            XmlReader reader = XmlReader.Create(url);
 
             SyndicationFeed feed = SyndicationFeed.Load(reader);
 
-        }     
+
+        }
 
         public List<Podcast> GetAllPodcast()
         {
             return podcastRepository.GetAll();
+        }
+
+        public List<string> GetPodcastDetailsByChapter()
+        {
+            new Chapter();
+            return chapter.returnChapter();
         }
 
         public string GetPodcastDetailsByName(string name)

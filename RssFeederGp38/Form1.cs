@@ -23,8 +23,11 @@ namespace RssFeederGp38
             InitializeComponent();
             podcastController = new PodcastController();
             PopulateList();
+            List<string> parts = new List<string>();
 
+            parts = podcastController.GetPodcastDetailsByChapter();
 
+            listBox3.Items.Add(parts.Count);
 
         }
 
@@ -59,7 +62,20 @@ namespace RssFeederGp38
                 }
 
             }
-            
+
+
+            XmlDocument doc1 = new XmlDocument();
+            doc1.Load("https://www.espn.com/espn/rss/news");
+            XmlElement root1 = doc1.DocumentElement;
+            XmlNodeList nodes1 = root1.SelectNodes("descendant::title");
+
+            foreach (XmlNode singularnode in nodes1)
+            {
+                
+                listBox1.Items.Add(singularnode.InnerText);
+
+            }
+
 
         }
 
@@ -91,6 +107,11 @@ namespace RssFeederGp38
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
    
