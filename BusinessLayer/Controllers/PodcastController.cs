@@ -34,7 +34,7 @@ namespace BusinessLayer.Controllers
             Podcast newPodcast = null;
             if (objectType.Equals("Feed"))
             {
-                newPodcast = new Feed(name, url, category);
+                newPodcast = new Feed(name, url, category, chapter.getChapterCount());
             }
             podcastRepository.Create(newPodcast);
         }
@@ -45,7 +45,7 @@ namespace BusinessLayer.Controllers
             Podcast newPodcast = null;
             if (objectType.Equals("Feed"))
             {
-                newPodcast = new Feed(name, url, category);
+                newPodcast = new Feed(name, url, category, chapter.getChapterCount());
             }
             podcastRepository.Create(newPodcast);
         }
@@ -64,10 +64,16 @@ namespace BusinessLayer.Controllers
             return podcastRepository.GetAll();
         }
 
-        public List<string> GetPodcastDetailsByChapter()
+        public List<string> GetPodcastDetailsByChapter(string url)
         {
-            new Chapter();
-            return chapter.returnChapter();
+            
+            return chapter.returnChapter(url);
+        }
+
+        public List<string> GetPodcastDetailsDexription()
+        {
+            
+            return chapter.returnChapterDescri();
         }
 
         public string GetPodcastDetailsByName(string name)

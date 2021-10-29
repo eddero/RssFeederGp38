@@ -34,6 +34,7 @@ namespace  RssFeederGp38.Models
         {
 
         }
+        
 
         public abstract string Display();
 

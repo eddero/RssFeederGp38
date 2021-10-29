@@ -18,6 +18,7 @@ namespace RssFeederGp38
     public partial class Form1 : Form
     {
         PodcastController podcastController;
+        string url;
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +26,9 @@ namespace RssFeederGp38
             PopulateList();
             List<string> parts = new List<string>();
 
-            parts = podcastController.GetPodcastDetailsByChapter();
+
+            parts = podcastController.GetPodcastDetailsByChapter(url);
+            
 
             listBox3.Items.Add(parts.Count);
 
@@ -103,7 +106,6 @@ namespace RssFeederGp38
             podcastController.CreatePodcast(txtCategoryName.Text, "Category");
             PopulateList();
 
-
         }
 
       
@@ -120,6 +122,27 @@ namespace RssFeederGp38
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<string> list = new List<string>();
+            
+            list = podcastController.GetPodcastDetailsDexription();
+
+            textBox2.Text = "";
+            
+
+            try
+            {
+                textBox2.Text = list[listBox1.SelectedIndex - 1];
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             
         }
     }

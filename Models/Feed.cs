@@ -10,17 +10,24 @@ namespace RssFeederGp38.Models
     {
         public string Category { get; set; }
         public int Frequency { get; set; }
-
-
+        public int ChapterCount { get; set; }
 
         public override string Display()
         {
             return Url;
         }
-        public Feed(string name, string url, string category) :base(name, url) 
+        public Feed(string name, string url, string category, int num) :base(name, url) 
         {
             Category = category;
-           
+            ChapterCount = getChapterNumber();
+
+
+        }
+        public int getChapterNumber()
+        {
+            Chapter chapter = new Chapter();
+
+            return chapter.getChapterCount();
         }
         private Feed()
         {
