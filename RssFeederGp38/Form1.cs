@@ -24,57 +24,45 @@ namespace RssFeederGp38
             InitializeComponent();
             podcastController = new PodcastController();
             PopulateList();
-            List<string> parts = new List<string>();
-
-
-            parts = podcastController.GetPodcastDetailsByChapter(url);
             
-
-            listBox3.Items.Add(parts.Count);
 
         }
 
         private void PopulateList()
         {
+            List<string> parts = new List<string>();
+
+
+            parts = podcastController.GetPodcastDetailsByChapter(url);
+
             categoryComboBox.Items.Clear();
             listBox2.Items.Clear();
+
+            string itemcount = parts.Count.ToString();
 
             foreach (Podcast item in podcastController.GetAllPodcast())
             {
                 if (item != null)
                 {
-                    listBox2.Items.Add(item.Name);
-                    
+                    string name = item.Name;
+                    string url = item.Url;
+
+
+                    listBox3.Items.Add($"{itemcount}     {name}         {url}");
+
                     categoryComboBox.Items.Add(item.Name);
                 }
             }
 
-            //ANTA ATT DOKMUMENTET REDAN FINNS
-            // XmlDocument doc = new XmlDocument();
-            
-            //{
+            /*foreach (Feed item in podcastController.GetAllPodcast())
+            {
+                if (item != null)
+                {
+                    listBox2.Items.Add(item.Frequency);
 
-            //    try
-            //    {
-
-            //        doc.Load("Podcasts.xml");
-            //        XmlElement root = doc.DocumentElement;
-            //        XmlNodeList nodes = root.SelectNodes("descendant::Url");
-
-            //        foreach (XmlNode singularnode in nodes)
-            //        {
-            //            listBox2.Items.Add(singularnode.InnerText);
-            //            Console.WriteLine(singularnode.InnerText);
-
-            //        }
-
-            //    }
-            //    catch (Exception e)
-            //        {
-            //        throw new NotImplementedException();
-            //        }
-            //}
-
+                    
+                }
+            }*/
 
             XmlDocument doc1 = new XmlDocument();
             doc1.Load("https://www.espn.com/espn/rss/news");
@@ -89,6 +77,7 @@ namespace RssFeederGp38
             }
 
 
+
         }
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
@@ -98,7 +87,7 @@ namespace RssFeederGp38
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-
+            podcastController.DeletePodcast(string name);
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
@@ -133,7 +122,6 @@ namespace RssFeederGp38
 
             textBox2.Text = "";
             
-
             try
             {
                 textBox2.Text = list[listBox1.SelectedIndex - 1];
@@ -141,7 +129,39 @@ namespace RssFeederGp38
             catch (Exception)
             {
 
-                throw;
+                throw new NotImplementedException();
+            }
+            
+        }
+
+        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBox2.Items.Clear();
+            int textindex = listBox3.SelectedIndex;
+            string text = listBox3.SelectedItem.ToString();
+            listBox2.Items.Add(text[7..10]);
+
+            
+            XmlDocument doc = new XmlDocument();
+            {
+                try
+                {
+                    doc.Load("Podcasts.xml");
+                    XmlElement root = doc.DocumentElement;
+                    XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex +1}]");
+
+                    foreach (XmlNode singularnode in nodes)
+                    {
+                        listBox2.Items.Add(singularnode.InnerText);
+
+                    }
+
+                }
+                catch (Exception)
+                {
+                    throw new NotImplementedException();
+                }
+
             }
             
         }
