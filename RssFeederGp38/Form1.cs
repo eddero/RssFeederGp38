@@ -46,22 +46,31 @@ namespace RssFeederGp38
                 }
             }
 
+            //ANTA ATT DOKMUMENTET REDAN FINNS
+            // XmlDocument doc = new XmlDocument();
             
-             XmlDocument doc = new XmlDocument();
-            
-            {
-                doc.Load("Podcasts.xml");
-                XmlElement root = doc.DocumentElement;
-                XmlNodeList nodes = root.SelectNodes("descendant::Url");
+            //{
 
-                foreach (XmlNode singularnode in nodes)
-                {
-                    listBox2.Items.Add(singularnode.InnerText);
-                    Console.WriteLine(singularnode.InnerText);
+            //    try
+            //    {
 
-                }
+            //        doc.Load("Podcasts.xml");
+            //        XmlElement root = doc.DocumentElement;
+            //        XmlNodeList nodes = root.SelectNodes("descendant::Url");
 
-            }
+            //        foreach (XmlNode singularnode in nodes)
+            //        {
+            //            listBox2.Items.Add(singularnode.InnerText);
+            //            Console.WriteLine(singularnode.InnerText);
+
+            //        }
+
+            //    }
+            //    catch (Exception e)
+            //        {
+            //        throw new NotImplementedException();
+            //        }
+            //}
 
 
             XmlDocument doc1 = new XmlDocument();

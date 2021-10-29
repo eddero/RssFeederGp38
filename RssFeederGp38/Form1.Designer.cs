@@ -59,17 +59,17 @@ namespace RssFeederGp38
             // 
             // bthAddFeed
             // 
-            this.bthAddFeed.Location = new System.Drawing.Point(213, 229);
+            this.bthAddFeed.Location = new System.Drawing.Point(54, 229);
             this.bthAddFeed.Name = "bthAddFeed";
             this.bthAddFeed.Size = new System.Drawing.Size(75, 23);
             this.bthAddFeed.TabIndex = 0;
-            this.bthAddFeed.Text = "Ny...";
+            this.bthAddFeed.Text = "Lägg till";
             this.bthAddFeed.UseVisualStyleBackColor = true;
             this.bthAddFeed.Click += new System.EventHandler(this.bthAddFeed_Click_1);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(304, 229);
+            this.button2.Location = new System.Drawing.Point(149, 229);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 1;
@@ -78,11 +78,11 @@ namespace RssFeederGp38
             // 
             // bthDeleteFeed
             // 
-            this.bthDeleteFeed.Location = new System.Drawing.Point(385, 229);
+            this.bthDeleteFeed.Location = new System.Drawing.Point(250, 229);
             this.bthDeleteFeed.Name = "bthDeleteFeed";
             this.bthDeleteFeed.Size = new System.Drawing.Size(75, 23);
             this.bthDeleteFeed.TabIndex = 2;
-            this.bthDeleteFeed.Text = "Ta bort...";
+            this.bthDeleteFeed.Text = "Ta bort";
             this.bthDeleteFeed.UseVisualStyleBackColor = true;
             // 
             // listBox2
@@ -110,14 +110,14 @@ namespace RssFeederGp38
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(54, 288);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.Size = new System.Drawing.Size(44, 15);
             this.label2.TabIndex = 6;
-            this.label2.Text = "label2";
+            this.label2.Text = "Avsnitt";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(235, 200);
+            this.comboBox1.Location = new System.Drawing.Point(204, 200);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 7;
@@ -126,7 +126,7 @@ namespace RssFeederGp38
             // categoryComboBox
             // 
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(375, 200);
+            this.categoryComboBox.Location = new System.Drawing.Point(337, 200);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(85, 23);
             this.categoryComboBox.TabIndex = 8;
@@ -136,13 +136,13 @@ namespace RssFeederGp38
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(479, 287);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.Size = new System.Drawing.Size(68, 15);
             this.label3.TabIndex = 9;
-            this.label3.Text = "label3";
+            this.label3.Text = "Beskrivning";
             // 
             // txtUrl
             // 
-            this.txtUrl.Location = new System.Drawing.Point(116, 200);
+            this.txtUrl.Location = new System.Drawing.Point(89, 200);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.Size = new System.Drawing.Size(100, 23);
             this.txtUrl.TabIndex = 11;
@@ -150,7 +150,7 @@ namespace RssFeederGp38
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(116, 179);
+            this.label5.Location = new System.Drawing.Point(100, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 12;
@@ -159,7 +159,7 @@ namespace RssFeederGp38
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(235, 179);
+            this.label6.Location = new System.Drawing.Point(204, 178);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 15);
             this.label6.TabIndex = 13;
@@ -168,7 +168,7 @@ namespace RssFeederGp38
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(375, 178);
+            this.label7.Location = new System.Drawing.Point(337, 178);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 15);
             this.label7.TabIndex = 14;
@@ -189,14 +189,14 @@ namespace RssFeederGp38
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(54, 46);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 15);
+            this.label8.Size = new System.Drawing.Size(75, 15);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Avsnitt";
+            this.label8.Text = "Antal Avsnitt";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(116, 46);
+            this.label9.Location = new System.Drawing.Point(149, 46);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(40, 15);
             this.label9.TabIndex = 17;
@@ -224,15 +224,15 @@ namespace RssFeederGp38
             // 
             this.btnAddCategory.Location = new System.Drawing.Point(479, 210);
             this.btnAddCategory.Name = "btnAddCategory";
-            this.btnAddCategory.Size = new System.Drawing.Size(75, 23);
+            this.btnAddCategory.Size = new System.Drawing.Size(91, 23);
             this.btnAddCategory.TabIndex = 21;
-            this.btnAddCategory.Text = "Ny...";
+            this.btnAddCategory.Text = "Ny kategori";
             this.btnAddCategory.UseVisualStyleBackColor = true;
             this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(560, 210);
+            this.button5.Location = new System.Drawing.Point(576, 210);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 22;
@@ -241,11 +241,11 @@ namespace RssFeederGp38
             // 
             // btnDeleteCategory
             // 
-            this.btnDeleteCategory.Location = new System.Drawing.Point(641, 210);
+            this.btnDeleteCategory.Location = new System.Drawing.Point(657, 210);
             this.btnDeleteCategory.Name = "btnDeleteCategory";
             this.btnDeleteCategory.Size = new System.Drawing.Size(75, 23);
             this.btnDeleteCategory.TabIndex = 23;
-            this.btnDeleteCategory.Text = "Ta bort...";
+            this.btnDeleteCategory.Text = "Ta bort";
             this.btnDeleteCategory.UseVisualStyleBackColor = true;
             this.btnDeleteCategory.Click += new System.EventHandler(this.btnDeleteCategory_Click);
             // 
