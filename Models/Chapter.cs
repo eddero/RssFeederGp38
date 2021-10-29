@@ -5,12 +5,13 @@ using System.Xml;
 
 namespace RssFeederGp38.Models
 {
-    public class Chapter 
+    public class Chapter
     {
-       public string ChapterName { get; set; }
-       public string ChapterDescription { get; set; }
-       public List<string> ChapterList { get; set; }
-
+        public string ChapterName { get; set; }
+        public string ChapterDescription { get; set; }
+        public int Frequnce { get; set; }
+        public int ChapterCount { get; set; }
+        public DateTime ChapterUpdate {get; set;}
 
 
 
@@ -20,21 +21,47 @@ namespace RssFeederGp38.Models
 
         }
 
-        public List<string> returnChapter()
+        public int getChapterCount()
+        {
+
+            return ChapterCount;
+        }
+
+        public List<string> returnChapter(string url)
         {
             List<string> ChapterList = new List<string>();
 
-            XmlDocument doc1 = new XmlDocument();
-            doc1.Load("https://www.espn.com/espn/rss/news");
-            XmlElement root1 = doc1.DocumentElement;
-            XmlNodeList nodes1 = root1.SelectNodes("descendant::title");
+            XmlDocument doc = new XmlDocument();
+            doc.Load("https://www.espn.com/espn/rss/news");
+            XmlElement root = doc.DocumentElement;
+            XmlNodeList nodes = root.SelectNodes("descendant::title");
 
-            foreach (XmlNode singularnode in nodes1)
+            foreach (XmlNode singularnode in nodes)
             {
 
                 ChapterList.Add(singularnode.InnerText);
 
+
             }
+            
+            return ChapterList;
+        }
+
+        public List<string> returnChapterDescri()
+        {
+
+            List<string> ChapterList = new List<string>();
+            
+            XmlDocument doc = new XmlDocument();
+            doc.Load("https://www.espn.com/espn/rss/news");
+            XmlElement root = doc.DocumentElement;
+            XmlNodeList nodes = root.SelectNodes("descendant::description");
+
+            foreach (XmlNode singularnode in nodes)
+            {
+                ChapterList.Add(singularnode.InnerText);
+            }
+            ChapterCount = ChapterList.Count;
             return ChapterList;
         }
     }
