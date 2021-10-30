@@ -8,7 +8,6 @@ namespace RssFeederGp38.Models
 {
     public class Feed : Podcast
     {
-        public string Category { get; set; }
         public int Frequency { get; set; }
         public int ChapterCount { get; set; }
 
@@ -16,7 +15,7 @@ namespace RssFeederGp38.Models
         {
             return Url;
         }
-        public Feed(string name, string url, string category, int num) :base(name, url) 
+        public Feed(string name, string url, string category, int num) :base(name, url, category) 
         {
             Category = category;
             ChapterCount = getChapterNumber();

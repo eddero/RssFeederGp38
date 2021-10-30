@@ -43,7 +43,8 @@ namespace DataAccesLayer.Repositories
             }
             return listOfPodcastDeserialized;
             
-        }     
+        }
+       
 
         public Podcast GetByName(string name)
         {
@@ -58,7 +59,7 @@ namespace DataAccesLayer.Repositories
 
         public int GetIndex(string name)
         {
-            throw new NotImplementedException();
+            return GetAll().FindIndex(e => e.Name.Equals(name));
         }
 
         public void SaveChanges()

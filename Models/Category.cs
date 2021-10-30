@@ -10,7 +10,7 @@ namespace RssFeederGp38.Models
         {
             throw new NotImplementedException();
         }
-        public Category(string name) :base(name)
+        public Category(string name): base (name)
         {
 
         }

@@ -54,5 +54,7 @@ namespace DataAccesLayer
                 throw new SerializerException("Podcast.xml", "Could not deserialize the file");
             }
         }
+
     }
+
 }

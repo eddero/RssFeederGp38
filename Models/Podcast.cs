@@ -15,6 +15,7 @@ namespace  RssFeederGp38.Models
     {
         public string Name { get; set; }
         public string Url { get; set; }
+        public string Category { get; set; }
 
 
         public Podcast(string name)
@@ -23,10 +24,11 @@ namespace  RssFeederGp38.Models
 
         }
 
-        public Podcast(string name, string url)
+        public Podcast(string name, string url, string category)
         {
             Name = name;
             Url = url;
+            Category = category;
 
         }
 

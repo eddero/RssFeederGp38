@@ -18,7 +18,7 @@ namespace RssFeederGp38
     public partial class Form1 : Form
     {
         PodcastController podcastController;
-        string url;
+        string Url { get; set; }
         public Form1()
         {
             InitializeComponent();
@@ -30,55 +30,44 @@ namespace RssFeederGp38
 
         private void PopulateList()
         {
-            List<string> parts = new List<string>();
+            List<string> lists = new List<string>();
 
 
-            parts = podcastController.GetPodcastDetailsByChapter(url);
+            lists = podcastController.GetPodcastDetailsByChapter(Url);
 
             categoryComboBox.Items.Clear();
             listBox2.Items.Clear();
 
-            string itemcount = parts.Count.ToString();
+            string itemcount = lists.Count.ToString();
 
             foreach (Podcast item in podcastController.GetAllPodcast())
             {
-                if (item != null)
+                if (item != null && item is Feed)
                 {
                     string name = item.Name;
                     string url = item.Url;
-
-
-                    listBox3.Items.Add($"{itemcount}     {name}         {url}");
-
-                    categoryComboBox.Items.Add(item.Name);
-                }
-            }
-
-            /*foreach (Feed item in podcastController.GetAllPodcast())
-            {
-                if (item != null)
-                {
-                    listBox2.Items.Add(item.Frequency);
-
+                    string category = item.Category;
+                    listBox3.Items.Add($"{itemcount}   {name}    {category}    {url}");
                     
+
+
+
                 }
-            }*/
-
-            XmlDocument doc1 = new XmlDocument();
-            doc1.Load("https://www.espn.com/espn/rss/news");
-            XmlElement root1 = doc1.DocumentElement;
-            XmlNodeList nodes1 = root1.SelectNodes("descendant::title");
-
-            foreach (XmlNode singularnode in nodes1)
-            {
-                
-                listBox1.Items.Add(singularnode.InnerText);
-
             }
 
 
+            foreach (Podcast item in podcastController.GetAllPodcast())
+            {
+                if (item != null && item is Category)
+                {
+                    listBox2.Items.Add(item.Name);
+                    categoryComboBox.Items.Add(item.Name);
 
+                } 
+            
+            }
         }
+
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
@@ -87,13 +76,12 @@ namespace RssFeederGp38
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-            podcastController.DeletePodcast(string name);
+            podcastController.DeletePodcast(listBox2.SelectedItem.ToString());
         }
 
         private void btnAddCategory_Click(object sender, EventArgs e)
         {
             podcastController.CreatePodcast(txtCategoryName.Text, "Category");
-            PopulateList();
 
         }
 
@@ -136,6 +124,7 @@ namespace RssFeederGp38
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
             listBox2.Items.Clear();
             int textindex = listBox3.SelectedIndex;
             string text = listBox3.SelectedItem.ToString();
@@ -148,11 +137,11 @@ namespace RssFeederGp38
                 {
                     doc.Load("Podcasts.xml");
                     XmlElement root = doc.DocumentElement;
-                    XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex +1}]");
+                    XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex + 1}]");
 
                     foreach (XmlNode singularnode in nodes)
                     {
-                        listBox2.Items.Add(singularnode.InnerText);
+                        Url = singularnode.InnerText;
 
                     }
 
@@ -163,6 +152,31 @@ namespace RssFeederGp38
                 }
 
             }
+            doc.Load(Url);
+            XmlElement root1 = doc.DocumentElement;
+            XmlNodeList nodes1 = root1.SelectNodes("descendant::title");
+
+            foreach (XmlNode singularnode in nodes1)
+            {
+
+                listBox1.Items.Add(singularnode.InnerText);
+
+            }
+            
+        }
+
+        private void bthDeleteFeed_Click(object sender, EventArgs e)
+        {
+            podcastController.DeletePodcast(listBox3.SelectedIndex);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            podcastController.DeletePodcast(listBox3.SelectedIndex);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
             
         }
     }

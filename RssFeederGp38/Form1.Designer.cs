@@ -75,6 +75,7 @@ namespace RssFeederGp38
             this.button2.TabIndex = 1;
             this.button2.Text = "Spara";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // bthDeleteFeed
             // 
@@ -84,6 +85,7 @@ namespace RssFeederGp38
             this.bthDeleteFeed.TabIndex = 2;
             this.bthDeleteFeed.Text = "Ta bort";
             this.bthDeleteFeed.UseVisualStyleBackColor = true;
+            this.bthDeleteFeed.Click += new System.EventHandler(this.bthDeleteFeed_Click);
             // 
             // listBox2
             // 
@@ -239,6 +241,7 @@ namespace RssFeederGp38
             this.button5.TabIndex = 22;
             this.button5.Text = "Spara";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // btnDeleteCategory
             // 
