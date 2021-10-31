@@ -32,7 +32,7 @@ namespace RssFeederGp38.Models
             List<string> ChapterList = new List<string>();
 
             XmlDocument doc = new XmlDocument();
-            doc.Load("https://www.espn.com/espn/rss/news");
+            doc.Load(url);
             XmlElement root = doc.DocumentElement;
             XmlNodeList nodes = root.SelectNodes("descendant::title");
 
@@ -47,13 +47,13 @@ namespace RssFeederGp38.Models
             return ChapterList;
         }
 
-        public List<string> returnChapterDescri()
+        public List<string> returnChapterDescri(string url)
         {
 
             List<string> ChapterList = new List<string>();
             
             XmlDocument doc = new XmlDocument();
-            doc.Load("https://www.espn.com/espn/rss/news");
+            doc.Load(url);
             XmlElement root = doc.DocumentElement;
             XmlNodeList nodes = root.SelectNodes("descendant::description");
 

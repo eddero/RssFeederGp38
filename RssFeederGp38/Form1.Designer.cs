@@ -35,7 +35,7 @@ namespace RssFeederGp38
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.fqCB = new System.Windows.Forms.ComboBox();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUrl = new System.Windows.Forms.TextBox();
@@ -116,14 +116,13 @@ namespace RssFeederGp38
             this.label2.TabIndex = 6;
             this.label2.Text = "Avsnitt";
             // 
-            // comboBox1
+            // fqCB
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(204, 200);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 23);
-            this.comboBox1.TabIndex = 7;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.fqCB.FormattingEnabled = true;
+            this.fqCB.Location = new System.Drawing.Point(204, 200);
+            this.fqCB.Name = "fqCB";
+            this.fqCB.Size = new System.Drawing.Size(121, 23);
+            this.fqCB.TabIndex = 7;
             // 
             // categoryComboBox
             // 
@@ -320,7 +319,7 @@ namespace RssFeederGp38
             this.Controls.Add(this.txtUrl);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.categoryComboBox);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.fqCB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox2);
@@ -343,7 +342,7 @@ namespace RssFeederGp38
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox fqCB;
         private System.Windows.Forms.ComboBox categoryComboBox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtUrl;

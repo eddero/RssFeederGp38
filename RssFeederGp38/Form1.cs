@@ -23,35 +23,35 @@ namespace RssFeederGp38
         {
             InitializeComponent();
             podcastController = new PodcastController();
+
             PopulateList();
-            
 
         }
 
         private void PopulateList()
         {
             List<string> lists = new List<string>();
+            fqCB.Items.Add("1000");
+            fqCB.Items.Add("2000");
+            fqCB.Items.Add("3000");
 
-
-            lists = podcastController.GetPodcastDetailsByChapter(Url);
+            //lists = podcastController.GetPodcastDetailsByChapter(Url);
 
             categoryComboBox.Items.Clear();
             listBox2.Items.Clear();
 
-            string itemcount = lists.Count.ToString();
+            //string itemcount = lists.Count.ToString();
 
             foreach (Podcast item in podcastController.GetAllPodcast())
             {
                 if (item != null && item is Feed)
                 {
+                    string frequncy = item.Frequncy;
                     string name = item.Name;
                     string url = item.Url;
                     string category = item.Category;
-                    listBox3.Items.Add($"{itemcount}   {name}    {category}    {url}");
-                    
-
-
-
+                    listBox3.Items.Add($"  {name}       {frequncy}            {category}");
+   
                 }
             }
 
@@ -71,7 +71,7 @@ namespace RssFeederGp38
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
-            podcastController.CreatePodcast(txtName.Text, txtUrl.Text, categoryComboBox.Text, "Feed");
+            podcastController.CreatePodcast(txtName.Text, txtUrl.Text, categoryComboBox.Text, fqCB.Text, "Feed");
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
@@ -85,12 +85,7 @@ namespace RssFeederGp38
 
         }
 
-      
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+     
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -106,7 +101,7 @@ namespace RssFeederGp38
         {
             List<string> list = new List<string>();
             
-            list = podcastController.GetPodcastDetailsDexription();
+            list = podcastController.GetPodcastDetailsDexription(Url);
 
             textBox2.Text = "";
             

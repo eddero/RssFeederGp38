@@ -37,23 +37,23 @@ namespace BusinessLayer.Controllers
             podcastRepository.Create(newPodcast);
 
         }
-        public void CreatePodcast(string name, string url, string category, string objectType)
+        public void CreatePodcast(string name, string url, string category, string frequncy, string objectType)
         {
             Podcast newPodcast = null;
             if (objectType.Equals("Feed"))
             {
-                newPodcast = new Feed(name, url, category, chapter.getChapterCount());
+                newPodcast = new Feed(name, url, category, frequncy);
             }
             podcastRepository.Create(newPodcast);
         }
 
 
-        public void CreateFeed(string name, string url, string category, string objectType)
+        public void CreateFeed(string name, string url, string category, string frequncy, string objectType)
         {
             Podcast newPodcast = null;
             if (objectType.Equals("Feed"))
             {
-                newPodcast = new Feed(name, url, category, chapter.getChapterCount());
+                newPodcast = new Feed(name, url, category, frequncy);
             }
             podcastRepository.Create(newPodcast);
         }
@@ -77,10 +77,10 @@ namespace BusinessLayer.Controllers
             return chapter.returnChapter(url);
         }
 
-        public List<string> GetPodcastDetailsDexription()
+        public List<string> GetPodcastDetailsDexription(string url)
         {
             
-            return chapter.returnChapterDescri();
+            return chapter.returnChapterDescri(url);
         }
 
         public string GetPodcastDetailsByName(string name)
