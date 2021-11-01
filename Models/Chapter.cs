@@ -8,12 +8,6 @@ namespace RssFeederGp38.Models
 {
     public class Chapter
     {
-        public string ChapterName { get; set; }
-        public string ChapterDescription { get; set; }
-        public int Frequnce { get; set; }
-        public int ChapterCount { get; set; }
-        public DateTime ChapterUpdate {get; set;}
-
 
 
         public Chapter() 
@@ -22,10 +16,27 @@ namespace RssFeederGp38.Models
 
         }
 
-        public int getChapterCount()
+        
+        public int returnChapterCount(string url)
         {
+            List<string> ChapterList = new List<string>();
 
-            return ChapterCount;
+            XmlDocument doc = new XmlDocument();
+            if (url != null)
+            {
+                doc.Load(url);
+                XmlElement root = doc.DocumentElement;
+                XmlNodeList nodes = root.SelectNodes("descendant::title");
+
+                foreach (XmlNode singularnode in nodes)
+                {
+
+                    ChapterList.Add(singularnode.InnerText);
+
+                }
+            }
+
+            return ChapterList.Count;
         }
 
         public List<string> returnChapter(string url)
@@ -63,7 +74,7 @@ namespace RssFeederGp38.Models
             {
                 ChapterList.Add(singularnode.InnerText);
             }
-            ChapterCount = ChapterList.Count;
+ 
             return ChapterList;
         }
     }

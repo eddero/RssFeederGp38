@@ -9,7 +9,7 @@ namespace  RssFeederGp38.Models
     [XmlInclude(typeof(Chapter))]
     [XmlInclude(typeof(Feed))]
 
-    
+
 
     public abstract class Podcast
     {
@@ -19,7 +19,8 @@ namespace  RssFeederGp38.Models
         public string Frequncy { get; set; }
         public DateTime NextUpdate { get; set; }
         public double UpdateInterval { get; set; }
-
+        public int ChapterNumber { get; set; }
+        public Chapter chapter {get; set;}
         public Podcast(string name)
         {
             Name = name;
@@ -33,6 +34,7 @@ namespace  RssFeederGp38.Models
             Category = category;
             Frequncy = frequncy;
             UpdateInterval = double.Parse(frequncy);
+            
             Update();
         }
 
@@ -57,7 +59,7 @@ namespace  RssFeederGp38.Models
             // Vi hittar den tidpunkten genom att lägga till det antalet millisekunder till den 
             // nuvarande tiden.
             NextUpdate = DateTime.Now.AddMilliseconds(UpdateInterval);
-            return $"{Name}-------------{Frequncy} -- {Category}----{NextUpdate}"; 
+            return $"----{Name}-----{Frequncy} -- {Category}----{NextUpdate}"; 
         }
 
         public abstract string Display();

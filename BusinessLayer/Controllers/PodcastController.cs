@@ -96,6 +96,12 @@ namespace BusinessLayer.Controllers
             return chapter.returnChapterDescri(url);
         }
 
+        public int GetPodcastDetailsNumber(string url)
+        {
+
+            return chapter.returnChapterCount(url);
+        }
+
         public string GetPodcastDetailsByName(string name)
         {
             

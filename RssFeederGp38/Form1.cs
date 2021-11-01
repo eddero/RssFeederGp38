@@ -22,7 +22,7 @@ namespace RssFeederGp38
         PodcastController podcastController;
         private Timer timer1 = new Timer();
         int numberOfTimeUpdated = 0;
-
+        int chaptercount;
         string Url { get; set; }
         
         public Form1()
@@ -31,7 +31,7 @@ namespace RssFeederGp38
             podcastController = new PodcastController();
             PopulateList();
 
-            timer1.Interval = 10000;
+            timer1.Interval = 1000;
             // Koppla event handler Timer_Tick() som ska köras varje gång timern körs dvs varje sekund
             // Tick är en event i klassen Timer som använder en inbyggd delegat EventHandler(object sender, EventArgs e); 
             //timer1.Tick += Timer1_Tick;
@@ -58,7 +58,7 @@ namespace RssFeederGp38
                 if (podcast.NeedsUpdate)
                 {
                     // i så fall anroppa dess Update() och tilldela sträng värdet till en listbox
-                    listBox3.Items.Add(podcast.Update());
+                    listBox3.Items.Add($" {chaptercount} +   {podcast.Update()}");
                     // räkna hur många är uppdaterad
                     numberOfTimeUpdated++;
                 }
@@ -78,34 +78,41 @@ namespace RssFeederGp38
 
             foreach (var podcast in list)
             {
-                listBox3.Items.Add($"                       {podcast.Name}                            {podcast.Frequncy}                     {podcast.Category}");
+                listBox3.Items.Add($"                 {podcast.Name}                            {podcast.Frequncy}                     {podcast.Category}");
             }
         }
 
         private void PopulateList()
         {
-
-            List<string> lists = new List<string>();
+            
+            List<int> lists = new List<int>();
             fqCB.Items.Add("1000");
             fqCB.Items.Add("2000");
             fqCB.Items.Add("3000");
 
-            //lists = podcastController.GetPodcastDetailsByChapter(Url);
+            
 
             categoryComboBox.Items.Clear();
             listBox2.Items.Clear();
 
-            //string itemcount = lists.Count.ToString();
+            Chapter chapter = new Chapter();
+
+            int num = podcastController.GetPodcastDetailsNumber(Url);
 
             foreach (Podcast item in podcastController.GetAllPodcast())
             {
+
                 if (item != null && item is Feed)
                 {
+                    
                     item.Display();
                     string frequncy = item.Frequncy;
                     string name = item.Name;
+                    string url = item.Url;
+                    int number = chapter.returnChapterCount(url);
+                    chaptercount = number;
                     string category = item.Category;
-                    listBox3.Items.Add($"                       {name}       {frequncy}            {category}");
+                    listBox3.Items.Add($" {number}     {name}       {frequncy}            {category}");
    
                 }
             }
@@ -182,12 +189,13 @@ namespace RssFeederGp38
        
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             listBox2.Items.Clear();
             int textindex = listBox3.SelectedIndex;
             //string text = listBox3.SelectedItem.ToString();
             //listBox2.Items.Add(text[7..10]);
             
+
             
             XmlDocument doc = new XmlDocument();
 
@@ -206,6 +214,7 @@ namespace RssFeederGp38
             }
             catch (Exception)
             {
+                
                 throw new NotImplementedException();
             }
 
