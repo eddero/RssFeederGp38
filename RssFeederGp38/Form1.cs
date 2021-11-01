@@ -29,26 +29,50 @@ namespace RssFeederGp38
             InitializeComponent();
             podcastController = new PodcastController();
 
-
-
             PopulateList();
+            LoadTitlestestAsync();
 
         }
         private async Task LoadTitlestestAsync()
         {
-            string feed1;
-            
-            XmlReader reader = XmlReader.Create("https://www.espn.com/espn/rss/news");
+            List<string> list = new List<string>();
 
-            SyndicationFeed feed = SyndicationFeed.Load(reader);
-            foreach (SyndicationItem item in feed.Items)
+            list = await GetTitles();
+
+            foreach (var item in list)
             {
                 
-                feed1 = await Task.Run(() => item.Title.Text);
-                listBox3.Items.Add(feed1);
+                listBox1.Items.Add(item);
             }
 
         }
+
+        public async Task<List<string>> GetTitles()
+        {
+            List<string> list = new List<string>();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("https://www.espn.com/espn/rss/news");
+            XmlElement root1 = doc.DocumentElement;
+            XmlNodeList nodes1 = root1.SelectNodes("descendant::title");
+
+           
+
+            return await Task.Run(() =>
+            {
+                foreach (XmlNode singularnode in nodes1)
+                {
+
+                    list.Add(singularnode.InnerText.ToString());
+                    Thread.Sleep(5000);
+                }
+                
+                return list;
+            });
+
+        }
+
+
 
         private async Task runDownloadAsync()
         {
@@ -149,9 +173,6 @@ namespace RssFeederGp38
 
             SortList(text);
 
-
-
-
         }
         
 
@@ -180,7 +201,6 @@ namespace RssFeederGp38
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-
             listBox2.Items.Clear();
             int textindex = listBox3.SelectedIndex;
             string text = listBox3.SelectedItem.ToString();
@@ -208,10 +228,8 @@ namespace RssFeederGp38
             }
 
         }
-
-        
-
-        private async void LoadTitles(string url)
+   
+        private void LoadTitles(string url)
         {
             listBox1.Items.Clear();
             XmlDocument doc = new XmlDocument();
@@ -225,7 +243,7 @@ namespace RssFeederGp38
                 listBox1.Items.Add(singularnode.InnerText);
 
             }
-            await Task.Yield();
+            
         }
         
         private void bthDeleteFeed_Click(object sender, EventArgs e)
