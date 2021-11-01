@@ -12,8 +12,6 @@ using System.Xml;
 using System.Xml.Linq;
 using BusinessLayer.Controllers;
 using RssFeederGp38.Models;
-using System.Threading.Tasks;
-using System.Threading;
 
 
 
@@ -22,71 +20,55 @@ namespace RssFeederGp38
     public partial class Form1 : Form
     {
         PodcastController podcastController;
-        
+        private Timer timer1 = new Timer();
+        int numberOfTimeUpdated = 0;
+
         string Url { get; set; }
+        
         public Form1()
         {
             InitializeComponent();
             podcastController = new PodcastController();
-
             PopulateList();
-            LoadTitlestestAsync();
 
-        }
-        private async Task LoadTitlestestAsync()
-        {
-            List<string> list = new List<string>();
-
-            list = await GetTitles();
-
-            foreach (var item in list)
-            {
-                
-                listBox1.Items.Add(item);
-            }
-
-        }
-
-        public async Task<List<string>> GetTitles()
-        {
-            List<string> list = new List<string>();
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load("https://www.espn.com/espn/rss/news");
-            XmlElement root1 = doc.DocumentElement;
-            XmlNodeList nodes1 = root1.SelectNodes("descendant::title");
-
-           
-
-            return await Task.Run(() =>
-            {
-                foreach (XmlNode singularnode in nodes1)
-                {
-
-                    list.Add(singularnode.InnerText.ToString());
-                    Thread.Sleep(5000);
-                }
-                
-                return list;
-            });
-
-        }
-
-
-
-        private async Task runDownloadAsync()
-        {
-            List<Podcast> list = podcastController.GetAllPodcast();
+            timer1.Interval = 10000;
+            // Koppla event handler Timer_Tick() som ska köras varje gång timern körs dvs varje sekund
+            // Tick är en event i klassen Timer som använder en inbyggd delegat EventHandler(object sender, EventArgs e); 
+            //timer1.Tick += Timer1_Tick;
+            timer1.Tick += Timer1_Tick2;
+            // starta timer
+            timer1.Start();
 
             
-            foreach (var podcast in list)
-            {
-              string name = await Task.Run(() => podcast.Name.ToString());
-                
-              listBox3.Items.Add(name);
-
-            }
         }
+
+        private void Timer1_Tick(object sender, EventArgs e)
+        {
+            listBox3.Items.Clear();
+            PopulateList();
+        }
+
+        private void Timer1_Tick2(object sender, EventArgs e)
+        {
+            listBox3.Items.Clear();
+            List<Podcast> podcasts = podcastController.GetAllPodcast();
+            
+            foreach (var podcast in podcasts)
+            {
+                if (podcast.NeedsUpdate)
+                {
+                    // i så fall anroppa dess Update() och tilldela sträng värdet till en listbox
+                    listBox3.Items.Add(podcast.Update());
+                    // räkna hur många är uppdaterad
+                    numberOfTimeUpdated++;
+                }
+            }
+            label12.Text = numberOfTimeUpdated + " times updated. Current time: " +
+                DateTime.Now.ToString();
+
+        }
+
+
 
         private void SortList(string categoryName)
         {
@@ -200,11 +182,11 @@ namespace RssFeederGp38
        
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
             listBox2.Items.Clear();
             int textindex = listBox3.SelectedIndex;
-            string text = listBox3.SelectedItem.ToString();
-            listBox2.Items.Add(text[7..10]);
+            //string text = listBox3.SelectedItem.ToString();
+            //listBox2.Items.Add(text[7..10]);
             
             
             XmlDocument doc = new XmlDocument();
@@ -254,8 +236,8 @@ namespace RssFeederGp38
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            podcastController.UpdatePodcast(listBox2.SelectedIndex, txtName.Text, txtUrl.Text, categoryComboBox.Text, fqCB.Text);
+            
+            podcastController.UpdatePodcast(listBox3.SelectedIndex, txtName.Text, txtUrl.Text, categoryComboBox.Text, fqCB.Text);
 
         }
 

@@ -17,7 +17,8 @@ namespace  RssFeederGp38.Models
         public string Url { get; set; }
         public string Category { get; set; }
         public string Frequncy { get; set; }
-
+        public DateTime NextUpdate { get; set; }
+        public double UpdateInterval { get; set; }
 
         public Podcast(string name)
         {
@@ -31,13 +32,33 @@ namespace  RssFeederGp38.Models
             Url = url;
             Category = category;
             Frequncy = frequncy;
+            UpdateInterval = double.Parse(frequncy);
+            Update();
         }
 
         public Podcast()
         {
 
         }
-        
+        public bool NeedsUpdate
+        {
+            get
+            {
+                // Om nästa uppdatering är innan nuvarande klockslag så ska en uppdatering ske
+                // dvs metoden NeedsUpdate ska returnera true
+                return NextUpdate <= DateTime.Now;
+            }
+        }
+
+
+        public string Update()
+        {
+            // nästa uppdatering sker om "UpdateInterval" minuter
+            // Vi hittar den tidpunkten genom att lägga till det antalet millisekunder till den 
+            // nuvarande tiden.
+            NextUpdate = DateTime.Now.AddMilliseconds(UpdateInterval);
+            return $"{Name}-------------{Frequncy} -- {Category}----{NextUpdate}"; 
+        }
 
         public abstract string Display();
 

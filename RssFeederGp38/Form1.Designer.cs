@@ -55,6 +55,7 @@ namespace RssFeederGp38
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bthAddFeed
@@ -295,11 +296,21 @@ namespace RssFeederGp38
             this.label4.TabIndex = 29;
             this.label4.Text = "Namn";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(54, 19);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 15);
+            this.label12.TabIndex = 30;
+            this.label12.Text = "Timer";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 460);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.listBox1);
@@ -362,6 +373,7 @@ namespace RssFeederGp38
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label12;
     }
 }
 
