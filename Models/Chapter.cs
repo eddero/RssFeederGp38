@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Xml;
 
+
 namespace RssFeederGp38.Models
 {
     public class Chapter
@@ -46,6 +47,7 @@ namespace RssFeederGp38.Models
             
             return ChapterList;
         }
+
 
         public List<string> returnChapterDescri(string url)
         {

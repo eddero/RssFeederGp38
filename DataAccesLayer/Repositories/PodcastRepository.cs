@@ -44,7 +44,6 @@ namespace DataAccesLayer.Repositories
             return listOfPodcastDeserialized;
             
         }
-       
 
         public Podcast GetByName(string name)
         {
@@ -69,11 +68,12 @@ namespace DataAccesLayer.Repositories
 
         public void Update(int index, Podcast entity)
         {
-            if(index >= 0)
+            if (index >= 0)
             {
                 listOfPodcasts[index] = entity;
             }
             SaveChanges();
         }
+        
     }
 }

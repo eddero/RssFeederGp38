@@ -34,10 +34,6 @@ namespace DataAccesLayer
             }
         }
 
-
-        
-    
-
         public List<Podcast> Deserialize()
         {
             try

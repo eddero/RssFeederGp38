@@ -17,13 +17,26 @@ namespace BusinessLayer.Controllers
             podcastRepository = new PodcastRepository();
             chapter = new Chapter();
         }
-        public void UpdatePodcast(int index, Podcast entity)
+
+      
+        public void UpdatePodcast(int index, string updateName)
+        {
+           Podcast updatePodcast = null;
+
+           updatePodcast = new Category(updateName);
+            
+           podcastRepository.Update(index, updatePodcast);
+
+        }
+
+        public void UpdatePodcast(int index, string updateName, string url, string category, string frequncy)
         {
             Podcast updatePodcast = null;
 
-            podcastRepository.Update(index, entity);
+            updatePodcast = new Feed(updateName, url, category, frequncy);
 
             podcastRepository.Update(index, updatePodcast);
+
         }
 
         public void CreatePodcast(string name, string objectType)
@@ -103,5 +116,6 @@ namespace BusinessLayer.Controllers
         {
             podcastRepository.Delete(index);
         }
+
     }
 }
