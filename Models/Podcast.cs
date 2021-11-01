@@ -19,7 +19,6 @@ namespace  RssFeederGp38.Models
         public string Frequncy { get; set; }
         public DateTime NextUpdate { get; set; }
         public double UpdateInterval { get; set; }
-        public int ChapterNumber { get; set; }
         public Chapter chapter {get; set;}
         public Podcast(string name)
         {
@@ -27,13 +26,12 @@ namespace  RssFeederGp38.Models
 
         }
 
-        public Podcast(string name, string url, string category, string frequncy)
+        public Podcast(string name, string url, string category, double frequncy)
         {
             Name = name;
             Url = url;
             Category = category;
-            Frequncy = frequncy;
-            UpdateInterval = double.Parse(frequncy);
+            UpdateInterval = frequncy;
             
             Update();
         }

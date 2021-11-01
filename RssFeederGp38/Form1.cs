@@ -36,6 +36,7 @@ namespace RssFeederGp38
             // Tick är en event i klassen Timer som använder en inbyggd delegat EventHandler(object sender, EventArgs e); 
             //timer1.Tick += Timer1_Tick;
             timer1.Tick += Timer1_Tick2;
+            
             // starta timer
             timer1.Start();
 
@@ -134,7 +135,7 @@ namespace RssFeederGp38
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
-            podcastController.CreatePodcast(txtName.Text, txtUrl.Text, categoryComboBox.Text, fqCB.Text, "Feed");
+            podcastController.CreatePodcast(txtName.Text, txtUrl.Text, categoryComboBox.Text, Convert.ToDouble(fqCB.Text), "Feed");
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
@@ -246,7 +247,7 @@ namespace RssFeederGp38
         private void button2_Click(object sender, EventArgs e)
         {
             
-            podcastController.UpdatePodcast(listBox3.SelectedIndex, txtName.Text, txtUrl.Text, categoryComboBox.Text, fqCB.Text);
+            podcastController.UpdatePodcast(listBox3.SelectedIndex, txtName.Text, txtUrl.Text, categoryComboBox.Text, Convert.ToDouble(fqCB.Text));
 
         }
 

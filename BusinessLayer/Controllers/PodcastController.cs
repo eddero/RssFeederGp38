@@ -29,7 +29,7 @@ namespace BusinessLayer.Controllers
 
         }
 
-        public void UpdatePodcast(int index, string updateName, string url, string category, string frequncy)
+        public void UpdatePodcast(int index, string updateName, string url, string category, double frequncy)
         {
             Podcast updatePodcast = null;
 
@@ -50,7 +50,7 @@ namespace BusinessLayer.Controllers
             podcastRepository.Create(newPodcast);
 
         }
-        public void CreatePodcast(string name, string url, string category, string frequncy, string objectType)
+        public void CreatePodcast(string name, string url, string category, double frequncy, string objectType)
         {
             Podcast newPodcast = null;
             if (objectType.Equals("Feed"))
@@ -61,7 +61,7 @@ namespace BusinessLayer.Controllers
         }
 
 
-        public void CreateFeed(string name, string url, string category, string frequncy, string objectType)
+        public void CreateFeed(string name, string url, string category, double frequncy, string objectType)
         {
             Podcast newPodcast = null;
             if (objectType.Equals("Feed"))

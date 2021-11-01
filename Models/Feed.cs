@@ -13,7 +13,7 @@ namespace RssFeederGp38.Models
         {
             return "hopla";
         }
-        public Feed(string name, string url, string category, string frequncy) :base(name, url, category, frequncy) 
+        public Feed(string name, string url, string category, double frequncy) :base(name, url, category, frequncy) 
         {
             
         }
