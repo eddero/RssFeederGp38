@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -31,10 +32,9 @@ namespace RssFeederGp38
             podcastController = new PodcastController();
             FixWindowFormSetting();
             PopulateList();
-            timer1.Interval = 6000;
+            timer1.Interval = 10000;
             
             timer1.Tick += Timer1_Tick2;
-
 
             timer1.Start();
 
@@ -141,15 +141,26 @@ namespace RssFeederGp38
 
                 }
 
-
             }
         }
 
+      
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
+            Validation valid = new Validation();
+            string text = txtName.Text.ToString();
+            string url = txtUrl.Text.ToString();
 
-            podcastController.CreatePodcast(txtName.Text, txtUrl.Text, categoryComboBox.Text, Convert.ToDouble(fqCB.Text), "Feed");
+            if (valid.Validate(text, url))
+            {
+                podcastController.CreatePodcast(text, url, categoryComboBox.Text, Convert.ToDouble(fqCB.Text), "Feed");
+            }
+            else
+            {
+                MessageBox.Show("Must fill");
+            }
+ 
         }
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
@@ -213,6 +224,7 @@ namespace RssFeederGp38
             int textindex = listBox3.SelectedIndex;
             //string text = listBox3.SelectedItem.ToString();
             //listBox2.Items.Add(text[7..10]);
+            
 
             XmlDocument doc = new XmlDocument();
 
