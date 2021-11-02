@@ -11,11 +11,11 @@ namespace BusinessLayer.Controllers
 {
     public class PodcastController
     {
-        IPodcastRepository<Podcast> podcastRepository;
+        IPodcastRepository<Podcast> podcastRepository; //gets a IPodcastRepository Variable with the type of Super
         Chapter chapter;
         public PodcastController()
         {
-            podcastRepository = new PodcastRepository();
+            podcastRepository = new PodcastRepository(); //Instansierar IPodcastRepository pattern.
             chapter = new Chapter();
         }
 
@@ -80,7 +80,7 @@ namespace BusinessLayer.Controllers
 
         }
 
-        public List<Podcast> GetAllPodcast()
+        public List<Podcast> GetAllPodcast() //Metod för att hämta en lisa över alla Podcasts så att den kan itereras.
         {
             
             return podcastRepository.GetAll();
@@ -89,7 +89,6 @@ namespace BusinessLayer.Controllers
 
         public List<string> GetPodcastDetailsByChapter(string url)
         {
-            
             return chapter.returnChapter(url);
         }
 
