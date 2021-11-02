@@ -54,7 +54,7 @@ namespace  RssFeederGp38.Models
             return $"----{Name}-----{Frequncy} -- {Category}----{NextUpdate}"; 
         }
 
-        public abstract string Display();
+ 
 
     }
 }

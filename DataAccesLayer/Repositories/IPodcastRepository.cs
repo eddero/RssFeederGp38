@@ -8,8 +8,6 @@ namespace DataAccesLayer.Repositories
 {
     public interface IPodcastRepository<T>:IRepository<T> where T:Podcast
     {
-        T GetByName(string name);
-
         int GetIndex(string name);
 
     }

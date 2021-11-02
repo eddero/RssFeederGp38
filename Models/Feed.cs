@@ -9,10 +9,7 @@ namespace RssFeederGp38.Models
     public class Feed : Podcast
     {
        
-        public override string Display()
-        {
-            return $"Podcast name is {Name}";
-        }
+        
         public Feed(string name, string url, string category, double frequncy) :base(name, url, category, frequncy) 
         {
             

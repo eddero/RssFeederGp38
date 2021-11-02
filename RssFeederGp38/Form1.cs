@@ -126,7 +126,6 @@ namespace RssFeederGp38
                 if (item != null && item is Feed)
                 {
 
-                    item.Display();
                     double frequncy = item.UpdateInterval;
                     string name = item.Name;
                     string url = item.Url;

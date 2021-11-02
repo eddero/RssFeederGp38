@@ -104,12 +104,6 @@ namespace BusinessLayer.Controllers
             return chapter.returnChapterCount(url);
         }
 
-        public string GetPodcastDetailsByName(string name)
-        {
-            
-            return podcastRepository.GetByName(name).Display();
-        }
-       
         public void DeletePodcast(string name)
         {
             int index = podcastRepository.GetIndex(name);
