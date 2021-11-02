@@ -46,19 +46,13 @@ namespace DataAccesLayer.Repositories
             }
             return listOfPodcastDeserialized;
             
-        }
+        }      
 
         public Podcast GetByName(string name)
         {
             return GetAll().FirstOrDefault(p => p.Name.Equals(name));
             
         }
-
-        public Podcast GetByUrl(string url)
-        {
-            return GetAll().FirstOrDefault(p => p.Url.Equals(url));
-        }
-
         public int GetIndex(string name)
         {
             return GetAll().FindIndex(e => e.Name.Equals(name));

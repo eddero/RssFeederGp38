@@ -56,7 +56,6 @@ namespace RssFeederGp38
             this.txtName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bthAddFeed
@@ -306,22 +305,11 @@ namespace RssFeederGp38
             this.label12.TabIndex = 30;
             this.label12.Text = "Timer";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(397, 258);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 31;
-            this.button1.Text = "Start";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(820, 460);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtName);
@@ -386,7 +374,6 @@ namespace RssFeederGp38
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Button button1;
     }
 }
 

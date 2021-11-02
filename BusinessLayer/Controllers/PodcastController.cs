@@ -5,6 +5,7 @@ using RssFeederGp38.Models;
 using DataAccesLayer.Repositories;
 using System.Xml;
 using System.ServiceModel.Syndication;
+using System.Threading;
 
 namespace BusinessLayer.Controllers
 {
@@ -81,8 +82,10 @@ namespace BusinessLayer.Controllers
 
         public List<Podcast> GetAllPodcast()
         {
+            
             return podcastRepository.GetAll();
         }
+
 
         public List<string> GetPodcastDetailsByChapter(string url)
         {
@@ -107,12 +110,7 @@ namespace BusinessLayer.Controllers
             
             return podcastRepository.GetByName(name).Display();
         }
-
-        public string GetPodcastDetailsByUrl(string url)
-        {
-            return podcastRepository.GetByUrl(url).Display();
-        }
-
+       
         public void DeletePodcast(string name)
         {
             int index = podcastRepository.GetIndex(name);

@@ -8,7 +8,7 @@ namespace RssFeederGp38.Models
     {
         public override string Display()
         {
-            throw new NotImplementedException();
+            return $"Category is name is {Name}";
         }
         public Category(string name): base (name)
         {

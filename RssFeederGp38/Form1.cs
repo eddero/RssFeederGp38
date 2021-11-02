@@ -52,8 +52,10 @@ namespace RssFeederGp38
 
         private void Timer1_Tick2(object sender, EventArgs e)
         {
+            
             try
             {
+                Chapter chapter = new Chapter();
                 listBox3.Items.Clear();
                 List<Podcast> podcasts = podcastController.GetAllPodcast();
 
@@ -61,9 +63,10 @@ namespace RssFeederGp38
                 {
                     if (podcast.NeedsUpdate)
                     {
+
                         if (podcast is Feed)
                         {
-                            listBox3.Items.Add($" {chaptercount} +   {podcast.Update()}");
+                            listBox3.Items.Add($" {chapter.returnChapterCount(podcast.Url)} +   {podcast.Update()}");
                         }
                         // i så fall anroppa dess Update() och tilldela sträng värdet till en listbox
 
@@ -154,9 +157,11 @@ namespace RssFeederGp38
             podcastController.DeletePodcast(listBox2.SelectedItem.ToString());
         }
 
-        private void btnAddCategory_Click(object sender, EventArgs e)
+        private async void btnAddCategory_Click(object sender, EventArgs e)
         {
             podcastController.CreatePodcast(txtCategoryName.Text, "Category");
+            Task task = UpdateCategoryAsync();
+            await task;
 
         }
 
@@ -206,7 +211,7 @@ namespace RssFeederGp38
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            //podcastController.GetPodcastDetailsByName(listBox3.SelectedItem);
             listBox2.Items.Clear();
             int textindex = listBox3.SelectedIndex;
             //string text = listBox3.SelectedItem.ToString();
@@ -275,30 +280,45 @@ namespace RssFeederGp38
             podcastController.UpdatePodcast(listBox2.SelectedIndex, txtCategoryName.Text);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private  List<Podcast> GetAll()
+
         {
-            Task task = UpdateCategoryAsync();
-            
+
+            List<Podcast> podcasts = podcastController.GetAllPodcast();
+            System.Threading.Thread.Sleep(3000);
+
+            MessageBox.Show("Done");
+
+            return podcasts;
+
         }
+
 
         private async Task UpdateCategoryAsync()
         {
+
             listBox2.Items.Clear();
+
             List<Podcast> alist = new List<Podcast>();
 
-            alist = await Task.Run(() => podcastController.GetAllPodcast());
-           
+            //alist = await Task.Run(() => podcastController.GetAllPodcast());
+
+            alist = await Task.Run(() => GetAll());
+
             foreach (var item in alist)
             {
                 if (alist != null && item is Category)
+
                 {
 
                     listBox2.Items.Add(item.Name);
                     categoryComboBox.Items.Add(item.Name);
 
                 }
+
             }
 
         }
+
     }
 }

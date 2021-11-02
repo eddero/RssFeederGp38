@@ -11,7 +11,7 @@ namespace RssFeederGp38.Models
        
         public override string Display()
         {
-            return "hopla";
+            return $"Podcast name is {Name}";
         }
         public Feed(string name, string url, string category, double frequncy) :base(name, url, category, frequncy) 
         {
