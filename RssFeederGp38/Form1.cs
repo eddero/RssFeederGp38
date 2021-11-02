@@ -156,8 +156,6 @@ namespace RssFeederGp38
             Validation valid = new Validation();
             string text = txtName.Text.ToString();
             string url = txtUrl.Text.ToString();
-            string cate = txtName.Text.ToString();
-            string fq = txtUrl.Text.ToString();
 
             if (valid.Validate(text, url))
             {
@@ -176,8 +174,20 @@ namespace RssFeederGp38
         }
 
         private async void btnAddCategory_Click(object sender, EventArgs e) 
-        {   //lägger till katergori och uppdaterar med Async. 
-            podcastController.CreatePodcast(txtCategoryName.Text, "Category");
+        {
+            Validation valid = new Validation();
+            string text = txtCategoryName.Text.ToString();
+
+            if (valid.Validate(text))
+            {
+                //lägger till katergori och uppdaterar med Async. 
+                podcastController.CreatePodcast(txtCategoryName.Text, "Category");
+            }
+            else
+            {
+                MessageBox.Show("Must fill");
+            }
+
             Task task = UpdateCategoryAsync();
             await task; //avbryter anropsmetoden och ger tillbaka kontrollen till task som kallar tills den väntade uppgiften är klar. 
          

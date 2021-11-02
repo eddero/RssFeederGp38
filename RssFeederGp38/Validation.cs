@@ -16,5 +16,14 @@ namespace RssFeederGp38
 
             return false;
         }
+        public bool Validate(string text)
+        {
+            if (text != null && text != String.Empty)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
