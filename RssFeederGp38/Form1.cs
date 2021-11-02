@@ -24,11 +24,13 @@ namespace RssFeederGp38
         int numberOfTimeUpdated = 0;
         int chaptercount;
         string Url { get; set; }
+        string podcastName { get; set; }
         
         public Form1()
         {
             InitializeComponent();
             podcastController = new PodcastController();
+            FillFrequenceCB();
             PopulateList();
 
             timer1.Interval = 1000;
@@ -69,8 +71,6 @@ namespace RssFeederGp38
 
         }
 
-
-
         private void SortList(string categoryName)
         {
             List<Podcast> list = podcastController.GetAllPodcast();
@@ -83,22 +83,22 @@ namespace RssFeederGp38
             }
         }
 
-        private void PopulateList()
+        private void FillFrequenceCB()
         {
-            
-            List<int> lists = new List<int>();
             fqCB.Items.Add("1000");
             fqCB.Items.Add("2000");
             fqCB.Items.Add("3000");
 
+        }
+
+        private void PopulateList()
+        {
             
+            Chapter chapter = new Chapter();
 
             categoryComboBox.Items.Clear();
             listBox2.Items.Clear();
 
-            Chapter chapter = new Chapter();
-
-            int num = podcastController.GetPodcastDetailsNumber(Url);
 
             foreach (Podcast item in podcastController.GetAllPodcast())
             {
@@ -113,7 +113,7 @@ namespace RssFeederGp38
                     int number = chapter.returnChapterCount(url);
                     chaptercount = number;
                     string category = item.Category;
-                    listBox3.Items.Add($" {number}     {name}       {frequncy}            {category}");
+                    listBox3.Items.Add($" {chaptercount}     {name}       {frequncy}            {category}");
    
                 }
             }
@@ -195,9 +195,7 @@ namespace RssFeederGp38
             int textindex = listBox3.SelectedIndex;
             //string text = listBox3.SelectedItem.ToString();
             //listBox2.Items.Add(text[7..10]);
-            
-
-            
+           
             XmlDocument doc = new XmlDocument();
 
             try
