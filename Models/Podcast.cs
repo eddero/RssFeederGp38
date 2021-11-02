@@ -29,8 +29,7 @@ namespace  RssFeederGp38.Models
             Name = name;
             Url = url;
             Category = category;
-            UpdateInterval = frequncy;
-            
+            UpdateInterval = frequncy;   
             Update();
         }
 
@@ -42,8 +41,7 @@ namespace  RssFeederGp38.Models
         {
             get
             {
-                // Om nästa uppdatering är innan nuvarande klockslag så ska en uppdatering ske
-                // dvs metoden NeedsUpdate ska returnera true
+                
                 return NextUpdate <= DateTime.Now;
             }
         }
@@ -51,9 +49,7 @@ namespace  RssFeederGp38.Models
 
         public string Update()
         {
-            // nästa uppdatering sker om "UpdateInterval" minuter
-            // Vi hittar den tidpunkten genom att lägga till det antalet millisekunder till den 
-            // nuvarande tiden.
+            
             NextUpdate = DateTime.Now.AddMilliseconds(UpdateInterval);
             return $"----{Name}-----{Frequncy} -- {Category}----{NextUpdate}"; 
         }

@@ -32,13 +32,11 @@ namespace RssFeederGp38
             podcastController = new PodcastController();
             FillFrequenceCB();
             PopulateList();
-            timer1.Interval = 5000;
-            // Koppla event handler Timer_Tick() som ska köras varje gång timern körs dvs varje sekund
-            // Tick är en event i klassen Timer som använder en inbyggd delegat EventHandler(object sender, EventArgs e); 
-            //timer1.Tick += Timer1_Tick;
+            timer1.Interval = 6000;
+            
             timer1.Tick += Timer1_Tick2;
 
-            // starta timer
+
             timer1.Start();
 
         }
@@ -68,9 +66,7 @@ namespace RssFeederGp38
                         {
                             listBox3.Items.Add($" {chapter.returnChapterCount(podcast.Url)} +   {podcast.Update()}");
                         }
-                        // i så fall anroppa dess Update() och tilldela sträng värdet till en listbox
-
-                        // räkna hur många är uppdaterad
+                        
                         numberOfTimeUpdated++;
                     }
                 }
@@ -88,21 +84,22 @@ namespace RssFeederGp38
 
         private void SortList(string categoryName)
         {
+            Chapter chapter = new Chapter();
             List<Podcast> list = podcastController.GetAllPodcast();
 
             list = list.Where(x => x.Category == categoryName).ToList();
 
             foreach (var podcast in list)
             {
-                listBox3.Items.Add($"                 {podcast.Name}                            {podcast.Frequncy}                     {podcast.Category}");
+                listBox3.Items.Add($"{chapter.returnChapterCount(podcast.Url)}             {podcast.Name}                 {podcast.UpdateInterval}              {podcast.Category}");
             }
         }
 
         private void FillFrequenceCB()
         {
-            fqCB.Items.Add("1000");
-            fqCB.Items.Add("2000");
-            fqCB.Items.Add("3000");
+            fqCB.Items.Add("10000");
+            fqCB.Items.Add("15000");
+            fqCB.Items.Add("20000");
 
         }
 
@@ -186,12 +183,11 @@ namespace RssFeederGp38
 
         }
 
-
+  
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             List<string> list = new List<string>();
 
-            //detail into async?
             list = podcastController.GetPodcastDetailsDexription(Url);
 
             textBox2.Text = "";
@@ -208,11 +204,9 @@ namespace RssFeederGp38
 
         }
 
-
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             //podcastController.GetPodcastDetailsByName(listBox3.SelectedItem);
-            listBox2.Items.Clear();
             int textindex = listBox3.SelectedIndex;
             //string text = listBox3.SelectedItem.ToString();
             //listBox2.Items.Add(text[7..10]);
@@ -296,12 +290,11 @@ namespace RssFeederGp38
 
         private async Task UpdateCategoryAsync()
         {
-
+            categoryComboBox.Items.Clear();
             listBox2.Items.Clear();
 
             List<Podcast> alist = new List<Podcast>();
 
-            //alist = await Task.Run(() => podcastController.GetAllPodcast());
 
             alist = await Task.Run(() => GetAll());
 

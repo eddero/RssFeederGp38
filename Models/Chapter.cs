@@ -20,10 +20,38 @@ namespace RssFeederGp38.Models
         public int returnChapterCount(string url)
         {
             List<string> ChapterList = new List<string>();
-
-            XmlDocument doc = new XmlDocument();
-            if (url != null)
+            try
             {
+                XmlDocument doc = new XmlDocument();
+                if (url != null)
+                {
+                    doc.Load(url);
+                    XmlElement root = doc.DocumentElement;
+                    XmlNodeList nodes = root.SelectNodes("descendant::title");
+
+                    foreach (XmlNode singularnode in nodes)
+                    {
+
+                        ChapterList.Add(singularnode.InnerText);
+
+                    }
+                }
+            }
+            catch (XmlException)
+            {
+
+                throw;
+            }
+            
+            return ChapterList.Count;
+        }
+
+        public List<string> returnChapter(string url)
+        {
+            List<string> ChapterList = new List<string>();
+            try
+            {
+                XmlDocument doc = new XmlDocument();
                 doc.Load(url);
                 XmlElement root = doc.DocumentElement;
                 XmlNodeList nodes = root.SelectNodes("descendant::title");
@@ -33,29 +61,14 @@ namespace RssFeederGp38.Models
 
                     ChapterList.Add(singularnode.InnerText);
 
+                    
                 }
             }
-
-            return ChapterList.Count;
-        }
-
-        public List<string> returnChapter(string url)
-        {
-            List<string> ChapterList = new List<string>();
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load(url);
-            XmlElement root = doc.DocumentElement;
-            XmlNodeList nodes = root.SelectNodes("descendant::title");
-
-            foreach (XmlNode singularnode in nodes)
+            catch (XmlException)
             {
 
-                ChapterList.Add(singularnode.InnerText);
-
-
+                throw;
             }
-            
             return ChapterList;
         }
 
