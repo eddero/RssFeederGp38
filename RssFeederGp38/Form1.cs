@@ -169,9 +169,11 @@ namespace RssFeederGp38
  
         }
 
-        private void btnDeleteCategory_Click(object sender, EventArgs e) 
+        private async void btnDeleteCategory_Click(object sender, EventArgs e) 
         {
             podcastController.DeletePodcast(listBox2.SelectedItem.ToString());//Tar bort kategori från boxen.
+            Task task = UpdateCategoryAsync();
+            await task;
         }
 
         private async void btnAddCategory_Click(object sender, EventArgs e) 
@@ -250,7 +252,7 @@ namespace RssFeederGp38
             {
                 doc.Load("Podcasts.xml"); //loads the XML
                 XmlElement root = doc.DocumentElement;
-                XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex +1}]");
+                XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex}]");
                 if (nodes != null)
                 {
                     foreach (XmlNode singularnode in nodes)
