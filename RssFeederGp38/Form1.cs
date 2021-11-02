@@ -24,13 +24,12 @@ namespace RssFeederGp38
         int numberOfTimeUpdated = 0;
         int chaptercount;
         string Url { get; set; }
-        string podcastName { get; set; }
 
         public Form1()
         {
             InitializeComponent();
             podcastController = new PodcastController();
-            FillFrequenceCB();
+            FixWindowFormSetting();
             PopulateList();
             timer1.Interval = 6000;
             
@@ -64,7 +63,7 @@ namespace RssFeederGp38
 
                         if (podcast is Feed)
                         {
-                            listBox3.Items.Add($" {chapter.returnChapterCount(podcast.Url)} +   {podcast.Update()}");
+                            listBox3.Items.Add($"{chapter.returnChapterCount(podcast.Url)}-----{podcast.Update()}");
                         }
                         
                         numberOfTimeUpdated++;
@@ -91,15 +90,18 @@ namespace RssFeederGp38
 
             foreach (var podcast in list)
             {
-                listBox3.Items.Add($"{chapter.returnChapterCount(podcast.Url)}             {podcast.Name}                 {podcast.UpdateInterval}              {podcast.Category}");
+                listBox3.Items.Add($"{chapter.returnChapterCount(podcast.Url)}--------{podcast.Name}--------{podcast.UpdateInterval}-------{podcast.Category}");
             }
         }
 
-        private void FillFrequenceCB()
+        private void FixWindowFormSetting()
         {
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            fqCB.DropDownStyle = ComboBoxStyle.DropDownList;
             fqCB.Items.Add("10000");
             fqCB.Items.Add("15000");
             fqCB.Items.Add("20000");
+            textBox2.ReadOnly = true;
 
         }
 
@@ -146,6 +148,7 @@ namespace RssFeederGp38
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
+
             podcastController.CreatePodcast(txtName.Text, txtUrl.Text, categoryComboBox.Text, Convert.ToDouble(fqCB.Text), "Feed");
         }
 
