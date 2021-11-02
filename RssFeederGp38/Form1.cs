@@ -163,7 +163,7 @@ namespace RssFeederGp38
             }
             else
             {
-                MessageBox.Show("Must fill");
+                MessageBox.Show("Vänligen fyll i alla textrutor!");
             }
  
         }
@@ -182,16 +182,16 @@ namespace RssFeederGp38
 
             if (valid.Validate(text))
             {
-                //lägger till katergori och uppdaterar med Async. 
+                //lägger till kategori och uppdaterar med Async. 
                 podcastController.CreatePodcast(txtCategoryName.Text, "Category");
             }
             else
             {
-                MessageBox.Show("Must fill");
+                MessageBox.Show("Vänligen fyll i alla textrutor!");
             }
 
             Task task = UpdateCategoryAsync();
-            await task; //avbryter anropsmetoden och ger tillbaka kontrollen till task som kallar tills den väntade uppgiften är klar. 
+            await task; //avbryter anropsmetoden och ger tillbaka kontrollen till task som kallar tills den väntande uppgiften är klar. 
          
         }
 
