@@ -6,9 +6,7 @@ using System.Xml.Serialization;
 namespace  RssFeederGp38.Models
 {
     [XmlInclude(typeof(Category))]
-    [XmlInclude(typeof(Chapter))]
     [XmlInclude(typeof(Feed))]
-
 
 
     public abstract class Podcast
@@ -19,7 +17,7 @@ namespace  RssFeederGp38.Models
         public string Frequncy { get; set; }
         public DateTime NextUpdate { get; set; }
         public double UpdateInterval { get; set; }
-        public Chapter chapter {get; set;}
+
         public Podcast(string name)
         {
             Name = name;
