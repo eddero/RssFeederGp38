@@ -32,7 +32,7 @@ namespace RssFeederGp38
             podcastController = new PodcastController();
             FixWindowFormSetting();
             PopulateList();
-            timer1.Interval = 5000; //Timeinterval är 5 sekunder
+            timer1.Interval = 10000; //Timeinterval är 10 sekunder
             // Koppla event handler Timer_Tick() som ska köras varje gång timern körs dvs varje sekund
             // Tick är en event i klassen Timer som använder en inbyggd delegat EventHandler(object sender, EventArgs e); 
             //timer1.Tick += Timer1_Tick;
