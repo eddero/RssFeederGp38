@@ -25,8 +25,11 @@ namespace DataAccesLayer.Repositories
 
         public void Delete(int index)
         {
-            listOfPodcasts.RemoveAt(index);
-            SaveChanges();
+            if (index != -1)
+            {
+                listOfPodcasts.RemoveAt(index);
+                SaveChanges();
+            }          
         }
 
         public List<Podcast> GetAll()

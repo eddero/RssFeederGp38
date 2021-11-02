@@ -52,25 +52,34 @@ namespace RssFeederGp38
 
         private void Timer1_Tick2(object sender, EventArgs e)
         {
-            listBox3.Items.Clear();
-            List<Podcast> podcasts = podcastController.GetAllPodcast();
-
-            foreach (var podcast in podcasts)
+            try
             {
-                if (podcast.NeedsUpdate)
-                {
-                    if (podcast is Feed)
-                    {
-                        listBox3.Items.Add($" {chaptercount} +   {podcast.Update()}");
-                    }
-                    // i så fall anroppa dess Update() och tilldela sträng värdet till en listbox
+                listBox3.Items.Clear();
+                List<Podcast> podcasts = podcastController.GetAllPodcast();
 
-                    // räkna hur många är uppdaterad
-                    numberOfTimeUpdated++;
+                foreach (var podcast in podcasts)
+                {
+                    if (podcast.NeedsUpdate)
+                    {
+                        if (podcast is Feed)
+                        {
+                            listBox3.Items.Add($" {chaptercount} +   {podcast.Update()}");
+                        }
+                        // i så fall anroppa dess Update() och tilldela sträng värdet till en listbox
+
+                        // räkna hur många är uppdaterad
+                        numberOfTimeUpdated++;
+                    }
                 }
+                label12.Text = numberOfTimeUpdated + " times updated. Current time: " +
+                    DateTime.Now.ToString();
             }
-            label12.Text = numberOfTimeUpdated + " times updated. Current time: " +
-                DateTime.Now.ToString();
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
 
         }
 
@@ -209,7 +218,7 @@ namespace RssFeederGp38
             {
                 doc.Load("Podcasts.xml");
                 XmlElement root = doc.DocumentElement;
-                XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex + 1}]");
+                XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex +1}]");
                 if (nodes != null)
                 {
                     foreach (XmlNode singularnode in nodes)
