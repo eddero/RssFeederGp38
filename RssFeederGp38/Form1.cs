@@ -144,7 +144,8 @@ namespace RssFeederGp38
                 {
                     listBox2.Items.Add(item.Name);
                     categoryComboBox.Items.Add(item.Name);
-
+                    categoryComboBox.SelectedIndex = 0;
+                    fqCB.SelectedIndex = 0;
                 }
 
             }
