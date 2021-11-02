@@ -151,7 +151,7 @@ namespace RssFeederGp38
         }
 
 
-        private void bthAddFeed_Click_1(object sender, EventArgs e)
+        private void bthAddFeed_Click_1(object sender, EventArgs e) 
         {
             Validation valid = new Validation();
             string text = txtName.Text.ToString();
