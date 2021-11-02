@@ -144,13 +144,14 @@ namespace RssFeederGp38
             }
         }
 
-      
 
         private void bthAddFeed_Click_1(object sender, EventArgs e)
         {
             Validation valid = new Validation();
             string text = txtName.Text.ToString();
             string url = txtUrl.Text.ToString();
+            string cate = txtName.Text.ToString();
+            string fq = txtUrl.Text.ToString();
 
             if (valid.Validate(text, url))
             {
