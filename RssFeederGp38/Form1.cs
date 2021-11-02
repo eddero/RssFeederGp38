@@ -231,8 +231,11 @@ namespace RssFeederGp38
             }
             catch (Exception)
             {
+                MessageBox.Show(
+                    "Här finns det inget avsnitt, vänligen gå till nästa!", "Error"
+            );
 
-                throw new NotImplementedException();
+                
             }
 
         }
