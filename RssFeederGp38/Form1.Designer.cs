@@ -131,7 +131,6 @@
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(85, 23);
             this.categoryComboBox.TabIndex = 8;
-            this.categoryComboBox.SelectedIndexChanged += new System.EventHandler(this.categoryComboBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -267,7 +266,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(277, 130);
             this.textBox2.TabIndex = 26;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // listBox1
             // 
@@ -341,7 +339,6 @@
             this.MinimumSize = new System.Drawing.Size(836, 499);
             this.Name = "Form1";
             this.Text = "Podcasts";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
