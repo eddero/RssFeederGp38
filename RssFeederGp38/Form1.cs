@@ -213,8 +213,6 @@ namespace RssFeederGp38
                 SortList(text);
             }
 
-
-
         }
 
   
@@ -252,7 +250,7 @@ namespace RssFeederGp38
             {
                 doc.Load("Podcasts.xml"); //loads the XML
                 XmlElement root = doc.DocumentElement;
-                XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex}]");
+                XmlNode nodes = root.SelectSingleNode($"descendant::Url[{textindex + 1}]");
                 if (nodes != null)
                 {
                     foreach (XmlNode singularnode in nodes)
